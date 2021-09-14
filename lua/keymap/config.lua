@@ -1,6 +1,6 @@
-local test = {}
+local config = {}
 
-test.enhance_jk_move = function(key)
+config.enhance_jk_move = function(key)
   if packer_plugins['accelerated-jk'] and not packer_plugins['accelerated-jk'].loaded then
     vim.cmd [[packadd accelerated-jk]]
   end
@@ -8,4 +8,4 @@ test.enhance_jk_move = function(key)
   return map
 end
 
-return test
+return config

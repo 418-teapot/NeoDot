@@ -1,6 +1,6 @@
-local rhs_options = {}
+local pbind = {}
 
-function rhs_options:new()
+local map = function()
   local instance = {
     cmd = '',
     options = {
@@ -10,31 +10,41 @@ function rhs_options:new()
       nowait = false,
     }
   }
-  setmetatable(instance, self)
-  self.__index = self
-  return instance
+  with_silent = function()
+    instance.options.silent = true
+  end
+  with_noremap = function()
+    instance.options.silent = true
+  end
+  with_nowait = function()
+    instance.options.silent = true
+  end
+  with_expr = function()
+    instance.options.silent = true
+  end
+  map_cmd = function(cmd_string)
+    instance.cmd = cmd_string
+  end
+  local bind
+  bind = function(func, ...)
+    if func == nil then
+      return instance
+    end
+    func(...)
+    return bind
+  end
+  return bind
 end
-
-function rhs_options:map_cmd(cmd_string)
-  self.cmd = cmd_string
-  return self
-end
-
-local pbind = {}
 
 function pbind.map_cmd(cmd_string)
-  local ro = rhs_options:new()
-  return ro:map_cmd(cmd_string)
+  return map()(map_cmd, cmd_string)
 end
 
 function pbind.nvim_load_mapping(mapping)
-  for key,value in pairs(mapping) do
-    local mode,keymap = key:match("([^|]*)|?(.*)")
-    if type(value) == 'table' then
-      local rhs = value.cmd
-      local options = value.options
-      vim.api.nvim_set_keymap(mode,keymap,rhs,options)
-    end
+  for key, value in pairs(mapping) do
+    local mode, keymap = key:match("([^|]*)|?(.*)")
+    assert(type(value) == 'table')
+    vim.api.nvim_set_keymap(mode, keymap, value.cmd, value.options)
   end
 end
 
