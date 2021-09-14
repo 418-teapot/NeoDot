@@ -1,23 +1,25 @@
-local global = {}
-local home = os.getenv("HOME")
-local path_sep = global.is_windows and '\\' or '/'
-local os_name = vim.loop.os_uname().sysname
-
-function global:load_variables()
-  self.is_mac = os_name == 'Darwin'
-  self.is_linux = os_name == 'Linux'
-  self.is_windows = os_name == 'Windows'
-  self.vim_path = vim.fn.stdpath('config')
-  self.cache_dir = home .. path_sep .. '.cache' .. path_sep .. 'nvim' .. path_sep
-  self.modules_dir = self.vim_path .. path_sep .. 'modules'
-  self.path_sep = path_sep
-  self.home = home
-  self.data_dir = string.format('%s/site/', vim.fn.stdpath('data'))
-  self.modules_dir = self.vim_path .. path_sep .. 'lua' .. path_sep .. 'modules'
-  self.packer_compiled = self.data_dir .. 'packer_compiled.vim'
-  self.compile_to_lua = self.data_dir .. 'lua' .. path_sep .. '_compiled.lua'
+local get_global = function()
+  local home = os.getenv("HOME")
+  local os_name = vim.loop.os_uname().sysname
+  local sep = (os_name == 'Windows') and '\\' or '/'
+  local vim_path = vim.fn.stdpath('config')
+  local data_dir = string.format('%s/site/', vim.fn.stdpath('data'))
+  local global = {
+    powerline_glyph = false,
+    home = home,
+    os_name = os_name,
+    is_mac = os_name == 'Darwin',
+    is_linux = os_name == 'Linux',
+    is_windows = os_name == 'Windows',
+    sep = sep,
+    vim_path = vim_path,
+    cache_dir = home .. sep .. '.cache' .. sep .. 'nvim' .. sep,
+    data_dir = data_dir,
+    modules_dir = vim_path .. sep .. 'lua' .. sep .. 'modules',
+    packer_compiled = data_dir .. 'packer_compiled.vim',
+    compile_to_lua = data_dir .. 'lua' .. sep .. '_compiled.lua',
+  }
+  return global
 end
 
-global:load_variables()
-
-return global
+return get_global()
