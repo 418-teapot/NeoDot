@@ -16,6 +16,7 @@ local autocmds = {
   ft = {
     {"FileType", "make", "setlocal noexpandtab"};
     {"FileType", "c,cpp,cc,js,ts,lua", "setlocal shiftwidth=2 tabstop=2 softtabstop=2"};
+    {"BufRead", "*.cls", "setlocal filetype=tex"};
   };
 }
 

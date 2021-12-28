@@ -9,4 +9,7 @@ M.basic_map = {
   ["n|k"] = map_cmd("v:count || mode(1)[0:1] == 'no' ? 'k' : 'gk'")(with_expr)();
 }
 
+M.plug_map = {
+}
+
 return M
