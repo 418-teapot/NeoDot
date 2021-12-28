@@ -1,5 +1,4 @@
 require("core")
-require("mapping")
 require("plugins")
-
+require("mapping")
 require("nightfox").load("nordfox")
