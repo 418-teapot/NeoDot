@@ -1,23 +1,23 @@
 local M = {}
 
-M.create_augroups = function(autocmds)
-  for group_name, cmds in pairs(autocmds) do
-    vim.api.nvim_command("augroup " .. group_name)
-    vim.api.nvim_command("autocmd!")
-    for _, cmd in ipairs(cmds) do
-      local command = table.concat(vim.tbl_flatten{"autocmd", cmd}, " ")
-      vim.api.nvim_command(command)
+M.indent = function()
+  local group = vim.api.nvim_create_augroup("indent", {})
+  vim.api.nvim_create_autocmd("FileType", {
+    pattern = "make",
+    group = group,
+    callback = function()
+      vim.bo.expandtab = false
     end
-  end
-  vim.api.nvim_command("augroup END")
+  })
+  vim.api.nvim_create_autocmd("FileType", {
+    pattern = {"c", "cpp", "cc", "js", "ts", "lua"},
+    group = group,
+    callback = function()
+      vim.bo.shiftwidth = 2
+      vim.bo.tabstop = 2
+      vim.bo.softtabstop = 2
+    end
+  })
 end
 
-local autocmds = {
-  ft = {
-    {"FileType", "make", "setlocal noexpandtab"};
-    {"FileType", "c,cpp,cc,js,ts,lua", "setlocal shiftwidth=2 tabstop=2 softtabstop=2"};
-    {"BufRead", "*.cls", "setlocal filetype=tex"};
-  };
-}
-
-M.create_augroups(autocmds)
+return M

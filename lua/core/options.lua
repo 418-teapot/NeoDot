@@ -1,79 +1,88 @@
-local misc = require("core.utils").misc
+local opt = vim.opt
+local g = vim.g
 
-local options = {
-  termguicolors = true;
-  number = true;
-  relativenumber = true;
-  showbreak = "↳  ";
-  showtabline = 2;
-  cursorline = true;
-  ruler = false;
-  colorcolumn = "81";
-  hidden = true;
+-- set leader key
+g.mapleader = " "
 
-  mouse = "nv";
-  magic = true;
-  clipboard = "unnamedplus";
-  wildignore = "*.DS_Store";
-  wildignorecase = true;
-  ignorecase = true;
-  smartcase = true;
-  infercase = true;
-  incsearch = true;
-  wrapscan = true;
-  timeout = true;
-  ttimeout = true;
-  timeoutlen = 500;
-  ttimeoutlen = 10;
-  updatetime = 10;
+-- only the last window have a status line
+opt.laststatus = 3
 
-  tabstop = 4;
-  softtabstop = 4;
-  expandtab = true;
-  smarttab = true;
-  shiftwidth = 4;
-  shiftround = true;
-  --- textwidth = 80;
-  autoindent = true;
-  smartindent = true;
-  foldlevelstart = 99;
+-- vim builtin status line don't show the line and column number of the cursor
+-- position
+opt.ruler = false
 
-  virtualedit = "block";
-  encoding = "utf-8";
-  fileformats = "unix,mac,dos";
-  backup = false;
-  backupskip = "/tmp/*,$TMP/*,*/build/*";
-  undofile = true;
-  history = 2000;
-  shada = "!,'300,<50,@100,s10,h";
-}
+-- always show tab page line
+opt.showtabline = 2
 
+-- string to put at the start of lines that have been wrapped
+opt.showbreak = "↳  "
+
+-- use + register as system clipboard for cross-platform
+opt.clipboard = "unnamedplus"
+
+-- show the line number relative to line with the cursor
+opt.number = true
+opt.relativenumber = true
+
+-- highlight the text line with the cursor
+opt.cursorline = true
+
+-- highlight 81 column
+opt.colorcolumn = "81"
+
+opt.tabstop = 4
+opt.softtabstop = 4
+opt.expandtab = true
+opt.shiftwidth = 4
+opt.shiftround = true
+opt.smartindent = true
+
+-- use mouse for all modes
+opt.mouse = "a"
+
+-- go to previous/next line with left and right arrow when cursor reaches 
+-- end/beginning of line
+opt.whichwrap:append "<>[]"
+
+-- ignore case when the pattern contains lowercase letters only
+opt.ignorecase = true
+opt.smartcase = true
+
+-- disable some builtin vim plugins
 local disabled_builtin_plugins = {
-  "netrw";
-  "netrwPlugin";
-  "netrwSettings";
-  "netrwFileHandlers";
-  "gzip";
-  "zip";
-  "zipPlugin";
-  "tar";
-  "tarPlugin";
-  "getscript";
-  "getscriptPlugin";
-  "vimball";
-  "vimballPlugin";
-  "2html_plugin";
-  "logiPat";
-  "rrhelper";
-  "spellfile_pulgin";
-  "matchit";
-  "matchparen";
+  "getscript",
+  "getscriptPlugin",
+  "gzip",
+  "logipat",
+  "netrw",
+  "netrwPlugin",
+  "netrwSettings",
+  "netrwFileHandlers",
+  "matchit",
+  "tar",
+  "tarPlugin",
+  "rrhelper",
+  "spellfile_plugin",
+  "vimball",
+  "vimballPlugin",
+  "zip",
+  "zipPlugin",
+  "tutor",
+  "rplugin",
+  "syntax",
+  "synmenu",
+  "optwin",
+  "compiler",
+  "bugreport",
+  "ftplugin",
 }
-
-for name, value in pairs(options) do
-  vim.o[name] = value
-end
 
 for _, plugin in pairs(disabled_builtin_plugins) do
-  vim.g["loaded_" .. plugin] = 1
+  g["loaded_" .. plugin] = 1
 end
+
+-- set shada path
+vim.schedule(function()
+  opt.shadafile = vim.fn.expand "$HOME" .. "/.local/share/nvim/shada/main.shada"
+  vim.cmd [[ silent! rsh ]]
+end)
