@@ -40,7 +40,7 @@ opt.smartindent = true
 -- use mouse for all modes
 opt.mouse = "a"
 
--- go to previous/next line with left and right arrow when cursor reaches 
+-- go to previous/next line with left and right arrow when cursor reaches
 -- end/beginning of line
 opt.whichwrap:append "<>[]"
 
