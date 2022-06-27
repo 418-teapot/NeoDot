@@ -36,4 +36,20 @@ M.comment = function()
   })
 end
 
+-- auto jump to the last viewed position
+M.jump = function()
+  local group = augroup("jump", {})
+  autocmd("BufReadPost", {
+    pattern = "*",
+    group = group,
+    once = true,
+    callback = function()
+      local lastview = vim.api.nvim_buf_get_mark(0, '"')
+      if lastview[row] ~= 0 then
+        vim.api.nvim_win_set_cursor(0, lastview)
+      end
+    end
+  })
+end
+
 return M
