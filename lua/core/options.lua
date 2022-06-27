@@ -4,6 +4,16 @@ local g = vim.g
 -- set leader key
 g.mapleader = " "
 
+-- always start editing with no code folds
+opt.foldlevelstart = 99
+
+-- allow the cursor can be positioned where there is no actual character
+-- in visual block mode
+opt.virtualedit = "block"
+
+-- ebable 24-bit RGB color in the TUI
+opt.termguicolors = true
+
 -- only the last window have a status line
 opt.laststatus = 3
 
@@ -30,6 +40,7 @@ opt.cursorline = true
 -- highlight 81 column
 opt.colorcolumn = "81"
 
+-- set indent
 opt.tabstop = 4
 opt.softtabstop = 4
 opt.expandtab = true
@@ -47,6 +58,17 @@ opt.whichwrap:append "<>[]"
 -- ignore case when the pattern contains lowercase letters only
 opt.ignorecase = true
 opt.smartcase = true
+
+-- time in milliseconds to wait for a mapped sequence to complete
+opt.timeoutlen = 400
+
+-- interval for writing swap file to disk
+opt.updatetime = 250
+
+-- automatically save undo history to an undo file
+-- defualt undodir is $XDG_HOME/nvim/undo/
+-- if $XDG_HOME is not defined, it will be $HOME/.local/share
+opt.undofile = true
 
 -- disable some builtin vim plugins
 local disabled_builtin_plugins = {
