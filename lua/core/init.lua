@@ -1,3 +1,4 @@
-require("core.events").indent()
-require("core.events").comment()
+local autocmds = require("core.events")
 
+autocmds.indent()
+autocmds.comment()
