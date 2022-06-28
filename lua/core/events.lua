@@ -42,10 +42,10 @@ M.jump = function()
   autocmd("BufReadPost", {
     pattern = "*",
     group = group,
-    once = true,
     callback = function()
       local lastview = vim.api.nvim_buf_get_mark(0, '"')
-      if lastview[row] ~= 0 then
+      local lastline, _ = unpack(lastview)
+      if lastline ~= 0 then
         vim.api.nvim_win_set_cursor(0, lastview)
       end
     end
