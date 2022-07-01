@@ -46,7 +46,14 @@ M.general = {
   },
   t = {
     ["<C-x"] = { vim.api.nvim_replace_termcodes("<C-\\><C-N>", true, true, true), " escape terminal mode" },
-  }
+  },
+}
+
+M.nvimtree = {
+  n = {
+    ["<C-n>"] = { "<cmd> NvimTreeToggle <CR>", "פּ toggle nvimtree" },
+    ["<leader>e"] = { "<cmd> NvimTreeFocus <CR>", "פּ focus nvimtree"}
+  },
 }
 
 return M
