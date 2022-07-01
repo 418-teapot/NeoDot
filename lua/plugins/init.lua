@@ -4,7 +4,7 @@ local plugins = {
   ["wbthomason/packer.nvim"] = {},
   ["navarasu/onedark.nvim"] = {
     config = function()
-      require("plugins.configs.onedark")
+      require("plugins.configs.theme")
     end
   },
   ["kyazdani42/nvim-web-devicons"] = {
@@ -17,6 +17,14 @@ local plugins = {
     requires = {"kyazdani42/nvim-web-devicons"},
     config = function()
       require("plugins.configs.nvimtree")
+    end
+  },
+
+  -- only load whichkey after all the gui
+  ["folke/which-key.nvim"] = {
+    module = "which-key",
+    config = function()
+      require("plugins.configs.whichkey")
     end
   }
 }
