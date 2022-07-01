@@ -21,8 +21,8 @@ opt.laststatus = 3
 -- position
 opt.ruler = false
 
--- always show tab page line
-opt.showtabline = 2
+-- always not show builtin tab page line
+opt.showtabline = 0
 
 -- string to put at the start of lines that have been wrapped
 opt.showbreak = "↳  "
