@@ -13,6 +13,12 @@ local plugins = {
       require("plugins.configs.devicons")
     end
   },
+  ["akinsho/bufferline.nvim"] = {
+    requires = {"kyazdani42/nvim-web-devicons"},
+    config = function()
+      require("plugins.configs.bufferline")
+    end
+  },
   ["kyazdani42/nvim-tree.lua"] = {
     requires = {"kyazdani42/nvim-web-devicons"},
     config = function()
