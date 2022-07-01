@@ -6,6 +6,14 @@ end
 
 local options = {
   options = {
+    offsets = {
+      {
+        filetype = "NvimTree",
+        text = "File Explorer",
+        highlight = "Directory",
+        text_align = "left"
+      }
+    }
   }
 }
 
