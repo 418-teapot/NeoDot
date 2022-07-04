@@ -8,10 +8,6 @@ M.toggle_theme = function()
     style = "dark"
   end
   vim.go.background = style
-  require("onedark").setup({
-    style = style
-  })
-  require("onedark").load()
 end
 
 M.load_mappings = function()

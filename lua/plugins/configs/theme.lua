@@ -5,9 +5,9 @@ if not present then
 end
 
 onedark.setup {
-  style = "warmer",
+  style = "dark",
   toggle_style_key = '<leader>tt',
-  toggle_style_list = {"warmer", "light"}
+  toggle_style_list = {"dark", "light"}
 }
 
 onedark.load()
