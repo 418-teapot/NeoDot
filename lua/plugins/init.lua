@@ -40,6 +40,10 @@ local plugins = {
   },
 
   ["NvChad/nvim-colorizer.lua"] = {
+    opt = true,
+    setup = function()
+      require("core.events").colorizer()
+    end,
     config = function()
       require("plugins.configs.colorizer")
     end

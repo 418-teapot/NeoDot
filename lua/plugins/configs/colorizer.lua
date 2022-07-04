@@ -12,3 +12,5 @@ local options = {
 }
 
 colorizer.setup(filetypes, options)
+
+vim.cmd("ColorizerAttachToBuffer")

@@ -5,7 +5,7 @@ local autocmd = vim.api.nvim_create_autocmd
 
 -- set indent for different file type
 M.indent = function()
-  local group = augroup("indent", {})
+  local group = augroup("Indent", {})
   autocmd("FileType", {
     pattern = "make",
     group = group,
@@ -26,7 +26,7 @@ end
 
 -- don't auto commenting new lines
 M.comment = function()
-  local group = augroup("comments", {})
+  local group = augroup("Comments", {})
   autocmd("BufEnter", {
     pattern = "*",
     group = group,
@@ -38,7 +38,7 @@ end
 
 -- auto jump to the last viewed position
 M.jump = function()
-  local group = augroup("jump", {})
+  local group = augroup("Jump", {})
   autocmd("BufReadPost", {
     pattern = "*",
     group = group,
@@ -47,6 +47,37 @@ M.jump = function()
       local lastline, _ = unpack(lastview)
       if lastline ~= 0 then
         vim.api.nvim_win_set_cursor(0, lastview)
+      end
+    end
+  })
+end
+
+-- lazy load plugins
+local lazy_load = function(tb)
+  local group = augroup(tb.augroup_name, {})
+  autocmd(tb.events, {
+    pattern = "*",
+    group = group,
+    callback = function()
+      if tb.condition() then
+        vim.api.nvim_del_augroup_by_id(group)
+        vim.cmd("PackerLoad " .. tb.plugins)
+      end
+    end
+  })
+end
+
+M.colorizer = function()
+  lazy_load({
+    events = { "BufRead", "BufNewFile" },
+    augroup_name = "ColorizerLazy",
+    plugins = "nvim-colorizer.lua",
+    condition = function()
+      local items = { "#", "rgb", "hsl", "rgba", "hsla" }
+      for _, val in ipairs(items) do
+        if vim.fn.search(val) ~= 0 then
+          return true
+        end
       end
     end
   })
