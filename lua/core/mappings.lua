@@ -72,6 +72,13 @@ M.nvimtree = {
   },
 }
 
+M.accelerated_jk = {
+  n = {
+    ["j"] = { "<Plug>(accelerated_jk_gj)", " move down" },
+    ["k"] = { "<Plug>(accelerated_jk_gk)", " move up" }
+  }
+}
+
 M.whichkey = {
   n = {
     ["<leader>wk"] = { "<cmd> WhichKey <CR>", "﬜ which-key all keymaps" }

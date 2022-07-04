@@ -31,6 +31,7 @@ local plugins = {
       require("plugins.configs.nvimtree")
     end
   },
+  ["rainbowhxch/accelerated-jk.nvim"] = {},
 
   -- only load whichkey after all the gui
   ["folke/which-key.nvim"] = {
