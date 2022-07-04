@@ -17,9 +17,12 @@ opt.termguicolors = true
 -- only the last window have a status line
 opt.laststatus = 3
 
--- vim builtin status line don't show the line and column number of the cursor
+-- vim builtin status line doesn't show the line and column number of the cursor
 -- position
 opt.ruler = false
+
+-- vim builtin status line doesn't show mode
+opt.showmode = false
 
 -- always not show builtin tab page line
 opt.showtabline = 0
