@@ -5,6 +5,12 @@ if not present then
 end
 
 devicons.set_icon {
+  LICENSE = {
+    icon = "",
+    color = "#ff5722",
+    cterm_color = "179",
+    name = "License"
+  },
   markdown = {
     icon = "",
     color = "#519aba",
