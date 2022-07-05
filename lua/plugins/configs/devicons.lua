@@ -4,7 +4,7 @@ if not present then
   return
 end
 
-devicons.set_icon {
+devicons.set_icon({
   LICENSE = {
     icon = "",
     color = "#ff5722",
@@ -23,4 +23,4 @@ devicons.set_icon {
     cterm_color = "67",
     name = "Markdown"
   }
-}
+  })

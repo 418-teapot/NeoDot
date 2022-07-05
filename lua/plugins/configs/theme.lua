@@ -4,10 +4,10 @@ if not present then
   return
 end
 
-onedark.setup {
+onedark.setup({
   style = "dark",
   toggle_style_key = '<leader>tt',
   toggle_style_list = {"dark", "light"}
-}
+})
 
 onedark.load()
