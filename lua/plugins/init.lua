@@ -49,6 +49,12 @@ local plugins = {
     end
   },
 
+  ["akinsho/toggleterm.nvim"] = {
+    config = function()
+      require("plugins.configs.toggleterm")
+    end
+  },
+
   -- only load whichkey after all the gui
   ["folke/which-key.nvim"] = {
     module = "which-key",

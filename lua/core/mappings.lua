@@ -30,9 +30,6 @@ M.general = {
     -- save
     ["<C-s>"] = { "<cmd> w <CR>", "﬚ save file" },
 
-    -- Copy all
-    ["<C-c>"] = { "<cmd> %y+ <CR>", " copy whole file" },
-
     -- line numbers
     ["<leader>n"] = { "<cmd> set nu! <CR>", " toggle line number" },
     ["<leader>rn"] = { "<cmd> set rnu! <CR>", " toggle relative number" },
@@ -41,11 +38,11 @@ M.general = {
       function()
         require("core.utils").toggle_theme()
       end,
-      " toggle theme",
-    }
+      " toggle theme"
+    },
   },
   t = {
-    ["<C-x"] = { vim.api.nvim_replace_termcodes("<C-\\><C-N>", true, true, true), " escape terminal mode" },
+    ["<ESC>"] = { vim.api.nvim_replace_termcodes("<C-\\><C-n>", true, true, true), " escape terminal mode"},
   },
 }
 
@@ -76,6 +73,14 @@ M.accelerated_jk = {
   n = {
     ["j"] = { "<Plug>(accelerated_jk_gj)", " move down" },
     ["k"] = { "<Plug>(accelerated_jk_gk)", " move up" }
+  }
+}
+
+M.toggle_term = {
+  n = {
+    ["<A-t>"] = { "<cmd> exe v:count1 . 'ToggleTerm' <CR>", " toggle terminal"},
+    ["<A-a>"] = { "<cmd> ToggleTermToggleAll <CR>", " toggle all terminal"},
+    ["<A-s>"] = { "<cmd> ToggleTermSendVisualSelection <CR>", " send select text to terminal"},
   }
 }
 

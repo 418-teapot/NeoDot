@@ -9,7 +9,8 @@ local options = {
 }
 
 local extensions = {
-  "nvim-tree"
+  "nvim-tree",
+  "toggleterm"
 }
 
 lualine.setup(options, extensions)
