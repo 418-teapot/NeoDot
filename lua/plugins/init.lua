@@ -55,6 +55,25 @@ local plugins = {
     end
   },
 
+  ["nvim-treesitter/nvim-treesitter"] = {
+    module = "nvim-treesitter",
+    setup = function()
+      require("core.events").on_file_open("nvim-treesitter")
+    end,
+    cmd = {
+      "TSInstall",
+      "TSBufEnable",
+      "TSBufDisable",
+      "TSEnable",
+      "TSDisable",
+      "TSModuleInfo"
+    },
+    run = ":TSUpdate",
+    config = function()
+      require("plugins.configs.treesitter")
+    end
+  },
+
   -- only load whichkey after all the gui
   ["folke/which-key.nvim"] = {
     module = "which-key",
