@@ -84,6 +84,33 @@ M.toggle_term = {
   }
 }
 
+M.comment = {
+  n = {
+    ["<leader>/"] = {
+      function()
+        require("Comment.api").toggle_current_linewise()
+      end,
+      "蘒 toggle comment",
+    },
+    ["<leader>b/"] = {
+      function()
+        require("Comment.api").toggle_current_blockwise()
+      end,
+      "蘒 toggle comment with block",
+    }
+  },
+  v = {
+    ["<leader>/"] = {
+      "<ESC><cmd> lua require('Comment.api').toggle_linewise_op(vim.fn.visualmode()) <CR>",
+      "蘒 toggle comment",
+    },
+    ["<leader>b/"] = {
+      "<ESC><cmd> lua require('Comment.api').toggle_blockwise_op(vim.fn.visualmode()) <CR>",
+      "蘒 toggle comment with block",
+    }
+  }
+}
+
 M.whichkey = {
   n = {
     ["<leader>wk"] = { "<cmd> WhichKey <CR>", "﬜ which-key all keymaps" }

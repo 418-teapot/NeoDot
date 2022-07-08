@@ -87,9 +87,17 @@ local plugins = {
   ["lukas-reineke/indent-blankline.nvim"] = {
     opt = true,
     requires = {"nvim-treesitter/nvim-treesitter", "navarasu/onedark.nvim"},
-    after = {"onedark", "nvim-treesitter"},
+    after = "nvim-treesitter",
     config = function()
       require("plugins.configs.blankline")
+    end
+  },
+
+  ["numToStr/Comment.nvim"] = {
+    module = "Comment",
+    key = {"<leader>/", "<leader>b/"},
+    config = function()
+      require("plugins.configs.comment")
     end
   },
 
