@@ -8,6 +8,8 @@ M.toggle_theme = function()
     style = "dark"
   end
   vim.go.background = style
+  local context_bg = require("onedark.colors")["bg2"]
+  vim.cmd("highlight IndentBlanklineContextStart guibg=" .. context_bg .. " gui=nocombine")
 end
 
 M.load_mappings = function()

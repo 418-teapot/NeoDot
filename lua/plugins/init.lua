@@ -84,6 +84,15 @@ local plugins = {
     after = "nvim-treesitter"
   },
 
+  ["lukas-reineke/indent-blankline.nvim"] = {
+    opt = true,
+    requires = {"nvim-treesitter/nvim-treesitter", "navarasu/onedark.nvim"},
+    after = {"onedark", "nvim-treesitter"},
+    config = function()
+      require("plugins.configs.blankline")
+    end
+  },
+
   -- only load whichkey after all the gui
   ["folke/which-key.nvim"] = {
     module = "which-key",
