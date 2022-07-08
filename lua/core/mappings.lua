@@ -111,6 +111,23 @@ M.comment = {
   }
 }
 
+M.gitsigns = {
+  n = {
+    ["[h"] = {
+      function()
+        require("gitsigns").prev_hunk()
+      end,
+      "Previous hunk"
+    },
+    ["]h"] = {
+      function()
+        require("gitsigns").next_hunk()
+      end,
+      "Next hunk"
+    }
+  }
+}
+
 M.whichkey = {
   n = {
     ["<leader>wk"] = { "<cmd> WhichKey <CR>", "﬜ which-key all keymaps" }

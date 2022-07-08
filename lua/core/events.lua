@@ -98,4 +98,19 @@ M.on_file_open = function(plugin_name)
   })
 end
 
+M.gitsigns = function()
+  lazy_load({
+    events = { "BufRead", "BufWinEnter", "BufNewFile" },
+    augroup_name = "GitsignsLazyLoad",
+    plugins = "gitsigns.nvim",
+    condition = function()
+      local file = vim.fn.expand("%")
+      if file ~= "NvimTree_1" and file ~= "[packer]" and file ~= "" then
+        local git_exist, _, _ = os.execute("git ls-files --error-unmatch " .. file .. " > /dev/null")
+        return git_exist
+      end
+    end
+  })
+end
+
 return M

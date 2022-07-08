@@ -101,6 +101,16 @@ local plugins = {
     end
   },
 
+  ["lewis6991/gitsigns.nvim"] = {
+    opt = true,
+    setup = function()
+      require("core.events").gitsigns()
+    end,
+    config = function()
+      require("plugins.configs.gitsigns")
+    end
+  },
+
   -- only load whichkey after all the gui
   ["folke/which-key.nvim"] = {
     module = "which-key",
