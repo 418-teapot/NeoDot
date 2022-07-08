@@ -74,6 +74,16 @@ local plugins = {
     end
   },
 
+  ["nvim-treesitter/nvim-treesitter-context"] = {
+    requires = {"nvim-treesitter/nvim-treesitter"},
+    after = "nvim-treesitter",
+  },
+
+  ["nvim-treesitter/nvim-treesitter-textobjects"] = {
+    requires = {"nvim-treesitter/nvim-treesitter"},
+    after = "nvim-treesitter"
+  },
+
   -- only load whichkey after all the gui
   ["folke/which-key.nvim"] = {
     module = "which-key",
