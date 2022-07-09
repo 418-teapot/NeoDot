@@ -128,6 +128,23 @@ M.gitsigns = {
   }
 }
 
+M.telescope = {
+  n = {
+    -- find
+    ["<leader>ff"] = { "<cmd> Telescope find_files <CR>", " find files" },
+    ["<leader>fa"] = { "<cmd> Telescope find_files follow=true no_ignore=true hidden=true <CR>", " find all files" },
+    ["<leader>fg"] = { "<cmd> Telescope live_grep <CR>", " live grep" },
+    ["<leader>fb"] = { "<cmd> Telescope buffers <CR>", " find buffers" },
+    ["<leader>fh"] = { "<cmd> Telescope help_tags <CR>", "ﲉ help page" },
+    ["<leader>fo"] = { "<cmd> Telescope oldfiles <CR>", " find oldfiles" },
+
+    -- git
+    ["<leader>gc"] = { "<cmd> Telescope git_commits <CR>", " git commits" },
+    ["<leader>gs"] = { "<cmd> Telescope git_status <CR>", " git status" },
+    ["<leader>gb"] = { "<cmd> Telescope git_branches <CR>", " git branches" }
+  }
+}
+
 M.whichkey = {
   n = {
     ["<leader>wk"] = { "<cmd> WhichKey <CR>", "﬜ which-key all keymaps" }

@@ -111,6 +111,14 @@ local plugins = {
     end
   },
 
+  ["nvim-telescope/telescope.nvim"] = {
+    cmd = "Telescope",
+    requires = {"nvim-lua/plenary.nvim"},
+    config = function()
+      require("plugins.configs.telescope")
+    end
+  },
+
   -- only load whichkey after all the gui
   ["folke/which-key.nvim"] = {
     module = "which-key",
