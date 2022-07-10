@@ -1,130 +1,113 @@
-local global = require('core.global')
+local opt = vim.opt
+local g = vim.g
 
-local disable_builtin_plugins = function()
-  local plugins_list = {
-    "netrw",
-    "netrwPlugin",
-    "netrwSettings",
-    "netrwFileHandlers",
-    "gzip",
-    "zip",
-    "zipPlugin",
-    "tar",
-    "tarPlugin",
-    "getscript",
-    "getscriptPlugin",
-    "vimball",
-    "vimballPlugin",
-    "2html_plugin",
-    "logiPat",
-    "rrhelper",
-    "spellfile_pulgin",
-    "matchit",
-    "matchparen"
-  }
+-- set leader key
+g.mapleader = " "
 
-  for _, plugin in pairs(plugins_list) do
-    vim.g["loaded_" .. plugin] = 1
-  end
+-- always start editing with no code folds
+opt.foldlevelstart = 99
+
+-- allow the cursor can be positioned where there is no actual character
+-- in visual block mode
+opt.virtualedit = "block"
+
+-- ebable 24-bit RGB color in the TUI
+opt.termguicolors = true
+
+-- only the last window have a status line
+opt.laststatus = 3
+
+-- vim builtin status line doesn't show the line and column number of the cursor
+-- position
+opt.ruler = false
+
+-- vim builtin status line doesn't show mode
+opt.showmode = false
+
+-- always not show builtin tab page line
+opt.showtabline = 0
+
+-- string to put at the start of lines that have been wrapped
+opt.showbreak = "↳  "
+
+-- use + register as system clipboard for cross-platform
+opt.clipboard = "unnamedplus"
+
+-- show the line number relative to line with the cursor
+opt.number = true
+opt.relativenumber = true
+
+-- highlight the text line with the cursor
+opt.cursorline = true
+
+-- highlight 81 column
+opt.colorcolumn = "81"
+
+-- set indent
+opt.tabstop = 4
+opt.softtabstop = 4
+opt.expandtab = true
+opt.shiftwidth = 4
+opt.shiftround = true
+opt.smartindent = true
+
+-- use mouse for all modes
+opt.mouse = "a"
+
+-- go to previous/next line with left and right arrow when cursor reaches
+-- end/beginning of line
+opt.whichwrap:append "<>[]"
+
+-- ignore case when the pattern contains lowercase letters only
+opt.ignorecase = true
+opt.smartcase = true
+
+-- time in milliseconds to wait for a mapped sequence to complete
+opt.timeoutlen = 400
+
+-- interval for writing swap file to disk
+opt.updatetime = 250
+
+-- automatically save undo history to an undo file
+-- defualt undodir is $XDG_HOME/nvim/undo/
+-- if $XDG_HOME is not defined, it will be $HOME/.local/share
+opt.undofile = true
+
+-- disable some builtin vim plugins
+local disabled_builtin_plugins = {
+  "getscript",
+  "getscriptPlugin",
+  "gzip",
+  "logipat",
+  "netrw",
+  "netrwPlugin",
+  "netrwSettings",
+  "netrwFileHandlers",
+  "matchit",
+  "tar",
+  "tarPlugin",
+  "rrhelper",
+  "spellfile_plugin",
+  "vimball",
+  "vimballPlugin",
+  "zip",
+  "zipPlugin",
+  "tutor",
+  "rplugin",
+  "syntax",
+  "synmenu",
+  "optwin",
+  "compiler",
+  "bugreport",
+  "ftplugin",
+}
+
+for _, plugin in pairs(disabled_builtin_plugins) do
+  g["loaded_" .. plugin] = 1
 end
 
-local set_basic_option = function()
-  local view_option = {
-    termguicolors = true;
-    number = true;
-    relativenumber = true;
-    showbreak = "↳  ";
-    showtabline = 2;
-    cursorline = true;
-    ruler = false;
-    colorcolumn = "81";
-    hidden = true;
-  }
-
-  local use_option = {
-    mouse = "nv";
-    magic = true;
-    clipboard = "unnamedplus";
-    wildignore = "*.DS_Store";
-    wildignorecase = true;
-    ignorecase = true;
-    smartcase = true;
-    infercase = true;
-    incsearch = true;
-    wrapscan = true;
-    timeout = true;
-    ttimeout = true;
-    timeoutlen = 500;
-    ttimeoutlen = 10;
-    updatetime = 10;
-  }
-
-  local coding_option = {
-    tabstop = 2;
-    softtabstop = 2;
-    softtabstop = -1;
-    expandtab = true;
-    smarttab = true;
-    shiftwidth = 2;
-    shiftround = true;
-    textwidth = 80;
-    autoindent = true;
-    smartindent = true;
-    foldlevelstart = 99;
-  }
-
-  local other_option = {
-    directory = global.cache_dir .. "swap" .. global.path_sep;
-    undodir = global.cache_dir .. "undo" .. global.path_sep;
-    backupdir = global.cache_dir .. "backup" .. global.path_sep;
-    viewdir = global.cache_dir .. "view" .. global.path_sep;
-    virtualedit = "block";
-    encoding = "utf-8";
-    fileformats = "unix,mac,dos";
-    backup = false;
-    backupskip = "/tmp/*,$TMP/*,*/build/*";
-    undofile = true;
-    history = 2000;
-    shada = "!,'300,<50,@100,s10,h";
-  }
-
-  local option_set = {
-    view_option,
-    use_option,
-    coding_option,
-    other_option
-  }
-
-  for _, set in pairs(option_set) do
-    for name, value in pairs(set) do
-      vim.o[name] = value
-    end
-  end
-end
-
-local set_mac_clipboard = function()
-  if global.is_mac then
-    vim.g.clipboard = {
-      name = "macOS-clipboard",
-      copy = {
-        ["+"] = "pbcopy",
-        ["*"] = "pbcopy",
-      },
-      paste = {
-        ["+"] = "pbpaste",
-        ["*"] = "pbpaste",
-      },
-      cache_enabled = 0
-    }
-    vim.g.python_host_prog = '/usr/bin/python'
-    vim.g.python3_host_prog = '/usr/loca/bin/python3'
-  end
-end
-
-local load_options = function()
-  disable_builtin_plugins()
-  set_basic_option()
-  set_mac_clipboard()
-end
-
-load_options()
+-- set shada path
+vim.schedule(function()
+  opt.shadafile = vim.fn.expand("$HOME" .. "/.local/share/nvim/shada/main.shada")
+  vim.cmd("silent! rsh")
+end)

@@ -1,10 +1,9 @@
-local init_modules = {
-  "core",
-}
+require("core")
+require("core.options")
 
-for _, module in ipairs(init_modules) do
-  local ok, err = pcall(require, module)
-  if not ok then
-    error("Error loading " .. module .. "\n\n" .. err)
-  end
-end
+vim.defer_fn(function()
+  require("core.utils").load_mappings()
+end, 0)
+
+require("core.packer").bootstrap()
+require("plugins")
