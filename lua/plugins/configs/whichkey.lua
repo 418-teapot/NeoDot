@@ -10,6 +10,4 @@ local options = {
   }
 }
 
-require("core.utils").load_mappings()
-
 whichkey.setup(options)
