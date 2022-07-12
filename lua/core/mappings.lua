@@ -141,7 +141,37 @@ M.telescope = {
     -- git
     ["<leader>gc"] = { "<cmd> Telescope git_commits <CR>", " git commits" },
     ["<leader>gs"] = { "<cmd> Telescope git_status <CR>", " git status" },
-    ["<leader>gb"] = { "<cmd> Telescope git_branches <CR>", " git branches" }
+    ["<leader>gb"] = { "<cmd> Telescope git_branches <CR>", " git branches" },
+
+    -- lsp
+    ["<leader>d"] = { "<cmd> Telescope lsp_definitions <CR>", " lsp definition" },
+    ["<leader>r"] = { "<cmd> Telescope lsp_references <CR>", " lsp references" },
+    ["<leader>i"] = { "<cmd> Telescope lsp_implementations <CR>", " lsp implementations" },
+    ["<leader>ld"] = { "<cmd> Telescope diagnostics <CR>", " lsp list diagnostics" },
+    ["<leader>lt"] = { "<cmd> Telescope lsp_type_definitions <CR>", " lsp definition of type" },
+  }
+}
+
+M.lspconfig = {
+  n = {
+    ["[d"] = {
+      function()
+        vim.diagnostic.goto_prev()
+      end,
+      "Previous diagnostic"
+    },
+    ["]d"] = {
+      function()
+        vim.diagnostic.goto_next()
+      end,
+      "Next diagnostic"
+    },
+    ["<leader>h"] = {
+      function()
+        vim.lsp.buf.hover()
+      end,
+      " lsp hover information"
+    }
   }
 }
 

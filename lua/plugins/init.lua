@@ -50,6 +50,11 @@ local plugins = {
   },
 
   ["akinsho/toggleterm.nvim"] = {
+    cmd = {
+      "ToggleTerm",
+      "ToggleTermToggleAll",
+      "ToggleTermSendVisualSelection"
+    },
     config = function()
       require("plugins.configs.toggleterm")
     end
@@ -116,6 +121,16 @@ local plugins = {
     requires = {"nvim-lua/plenary.nvim"},
     config = function()
       require("plugins.configs.telescope")
+    end
+  },
+
+  ["williamboman/nvim-lsp-installer"] = {},
+
+  ["neovim/nvim-lspconfig"] = {
+    after = "nvim-lsp-installer",
+    config = function()
+      require("plugins.configs.lspinstaller")
+      require("plugins.configs.lspconfig")
     end
   },
 

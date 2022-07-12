@@ -16,7 +16,7 @@ M.toggle_theme = function()
   vim.cmd("highlight IndentBlanklineContextStart guibg=" .. context_bg .. " gui=nocombine")
 end
 
-M.load_mappings = function()
+M.load_mappings = function(mappings, mapping_opt)
   -- set mapping function with/without whichkey
   local map_func
   local present, whichkey = pcall(require, "which-key")
@@ -33,13 +33,13 @@ M.load_mappings = function()
     end
   end
 
-  local mappings = vim.deepcopy(require("core.mappings"))
+  mappings = mappings or vim.deepcopy(require("core.mappings"))
   mappings.lspconfig = nil
 
   for _, section_mappings in pairs(mappings) do
     for mode, mode_mappings in pairs(section_mappings) do
       for keybind, mapping_info in pairs(mode_mappings) do
-        local opts = vim.tbl_deep_extend("force", { mode = mode }, {})
+        local opts = vim.tbl_deep_extend("force", { mode = mode }, mapping_opt or {})
         map_func(keybind, mapping_info, opts)
       end
     end
