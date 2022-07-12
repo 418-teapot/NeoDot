@@ -13,4 +13,7 @@ local extensions = {
   "toggleterm"
 }
 
-lualine.setup(options, extensions)
+lualine.setup({
+  options = options,
+  extensions = extensions
+})
