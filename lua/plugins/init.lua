@@ -146,10 +146,6 @@ local plugins = {
     end
   },
 
-  ["hrsh7th/cmp-nvim-lsp"] = {
-    after = "friendly-snippets"
-  },
-
   ["L3MON4D3/LuaSnip"] = {
     wants = "friendly-snippets",
     after = "nvim-cmp",
@@ -166,8 +162,12 @@ local plugins = {
     after = "cmp_luasnip"
   },
 
-  ["hrsh7th/cmp-buffer"] = {
+  ["hrsh7th/cmp-nvim-lsp"] = {
     after = "cmp-nvim-lua"
+  },
+
+  ["hrsh7th/cmp-buffer"] = {
+    after = "cmp-nvim-lsp"
   },
 
   ["hrsh7th/cmp-path"] = {
