@@ -113,4 +113,17 @@ M.gitsigns = function()
   })
 end
 
+M.luasnip = function()
+  local group = augroup("LuaSnip", {})
+  autocmd("InsertLeave", {
+    pattern = "*",
+    group = group,
+    callback = function()
+      if require("luasnip").session.current_nodes[vim.api.nvim_get_current_buf()] and not require("luasnip").session.jump_active then
+        require("luasnip").unlink_current()
+      end
+    end
+  })
+end
+
 return M
