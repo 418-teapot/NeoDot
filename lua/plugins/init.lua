@@ -174,6 +174,13 @@ local plugins = {
     after = "cmp-buffer"
   },
 
+  ["windwp/nvim-autopairs"] = {
+    after = "nvim-cmp",
+    config = function()
+      require("plugins.configs.autopairs")
+    end
+  },
+
   -- only load whichkey after all the gui
   ["folke/which-key.nvim"] = {
     module = "which-key",
