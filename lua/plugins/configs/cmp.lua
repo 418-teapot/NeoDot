@@ -6,11 +6,27 @@ end
 
 vim.opt.completeopt = "menuone,noselect"
 
+local lspkind = require("lspkind")
+
 local options = {
   snippet = {
     expand = function(args)
       require("luasnip").lsp_expand(args.body)
     end
+  },
+  formatting = {
+    format = lspkind.cmp_format({
+      before = function(entry, vim_item)
+        vim_item.kind = lspkind.presets.default[vim_item.kind] .. " " .. vim_item.kind
+        if entry.source.name == "cmp_tabnine" then
+          if entry.completion_item.data ~= nil and entry.completion_item.data.detail ~= nil then
+            vim_item.menu = entry.completion_item.data.detail
+          end
+          vim_item.kind = "⌬ TabNine"
+        end
+        return vim_item
+      end
+    })
   },
   mapping = {
     ["<C-d>"] = cmp.mapping.scroll_docs(4),
@@ -47,6 +63,7 @@ local options = {
   },
   sources = {
     { name = "luasnip" },
+    { name = "cmp_tabnine" },
     { name = "nvim_lsp" },
     { name = "buffer" },
     { name = "nvim_lua" },

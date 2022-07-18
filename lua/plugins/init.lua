@@ -139,8 +139,12 @@ local plugins = {
     event = "InsertEnter",
   },
 
+  ["onsails/lspkind.nvim"] = {
+    after = "friendly-snippets"
+  },
+
   ["hrsh7th/nvim-cmp"] = {
-    after = "friendly-snippets",
+    after = "lspkind.nvim",
     config = function()
       require("plugins.configs.cmp")
     end
@@ -152,6 +156,11 @@ local plugins = {
     config = function()
       require("plugins.configs.luasnip")
     end
+  },
+
+  ["tzachar/cmp-tabnine"] = {
+    after = "nvim-cmp",
+    run = "./install.sh"
   },
 
   ["saadparwaiz1/cmp_luasnip"] = {
