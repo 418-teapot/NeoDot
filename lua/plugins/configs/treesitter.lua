@@ -54,9 +54,9 @@ local options = {
       node_decremental = "<BS>"
     }
   },
-  indent = {
-    enable = true
-  },
+  -- indent = {
+  --   enable = true
+  -- },
   textobjects = {
     select = {
       enable = true,
