@@ -39,7 +39,7 @@ end
 -- auto jump to the last viewed position
 M.jump = function()
   local group = augroup("Jump", {})
-  autocmd("BufEnter", {
+  autocmd("BufWinEnter", {
     pattern = "*",
     group = group,
     callback = function()
