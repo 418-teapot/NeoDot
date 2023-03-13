@@ -14,7 +14,7 @@ M.indent = function()
     end
   })
   autocmd("FileType", {
-    pattern = {"c", "cpp", "cc", "js", "ts", "lua"},
+    pattern = {"c", "cpp", "cc", "js", "ts", "lua", "rust"},
     group = group,
     callback = function()
       vim.bo.shiftwidth = 2
