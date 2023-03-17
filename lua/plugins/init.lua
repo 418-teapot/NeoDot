@@ -1,202 +1,66 @@
-vim.cmd("packadd packer.nvim")
+-- All plugins have lazy = true by default
 
 local plugins = {
-  ["wbthomason/packer.nvim"] = {},
-  ["rainbowhxch/accelerated-jk.nvim"] = {},
-
-  ["navarasu/onedark.nvim"] = {
+  -- the colorscheme should be available when starting Neovim
+  {
+    "folke/tokyonight.nvim",
+    lazy = false, -- make sure we load this during startup if it is your main colorscheme
+    priority = 1000, -- make sure to load this before all the other start plugins
     config = function()
-      require("plugins.configs.theme")
-    end
-  },
-
-  ["kyazdani42/nvim-web-devicons"] = {
-    module = "nvim-web-devicons",
-    config = function()
-      require("plugins.configs.devicons")
-    end
-  },
-
-  ["akinsho/bufferline.nvim"] = {
-    requires = {"kyazdani42/nvim-web-devicons"},
-    config = function()
-      require("plugins.configs.bufferline")
-    end
-  },
-
-  ["nvim-lualine/lualine.nvim"] = {
-    requires = {"kyazdani42/nvim-web-devicons"},
-    config = function()
-      require("plugins.configs.lualine")
-    end
-  },
-
-  ["kyazdani42/nvim-tree.lua"] = {
-    requires = {"kyazdani42/nvim-web-devicons"},
-    cmd = { "NvimTreeToggle", "NvimTreeFocus" },
-    config = function()
-      require("plugins.configs.nvimtree")
-    end
-  },
-
-  ["NvChad/nvim-colorizer.lua"] = {
-    opt = true,
-    setup = function()
-      require("core.events").colorizer()
+      -- load the colorscheme here
+      vim.cmd([[colorscheme tokyonight]])
     end,
-    config = function()
-      require("plugins.configs.colorizer")
-    end
   },
 
-  ["akinsho/toggleterm.nvim"] = {
-    cmd = {
-      "ToggleTerm",
-      "ToggleTermToggleAll",
-      "ToggleTermSendVisualSelection"
+  {
+    "nvim-lua/plenary.nvim",
+  },
+
+  {
+    "nvim-tree/nvim-web-devicons",
+    opts = function()
+      return require("plugins.configs.devicons")
+    end,
+  },
+
+  {
+    "nvim-lualine/lualine.nvim",
+    opts = {},
+    event = {
+      "BufEnter",
     },
-    config = function()
-      require("plugins.configs.toggleterm")
-    end
   },
 
-  ["nvim-treesitter/nvim-treesitter"] = {
-    module = "nvim-treesitter",
-    setup = function()
-      require("core.events").on_file_open("nvim-treesitter")
-    end,
-    cmd = {
-      "TSInstall",
-      "TSBufEnable",
-      "TSBufDisable",
-      "TSEnable",
-      "TSDisable",
-      "TSModuleInfo"
+  {
+    "akinsho/bufferline.nvim",
+    opts = {},
+    event = {
+      "BufEnter",
     },
-    run = ":TSUpdate",
-    config = function()
-      require("plugins.configs.treesitter")
-    end
   },
 
-  ["nvim-treesitter/nvim-treesitter-context"] = {
-    requires = {"nvim-treesitter/nvim-treesitter"},
-    after = "nvim-treesitter",
+  {
+    "nvim-tree/nvim-tree.lua",
+    opts = {},
+    keys = {
+      { "<C-n>", "<cmd>NvimTreeToggle<cr>", mode = "n", desc = "toggle NvimTree" },
+    },
   },
 
-  ["nvim-treesitter/nvim-treesitter-textobjects"] = {
-    requires = {"nvim-treesitter/nvim-treesitter"},
-    after = "nvim-treesitter"
-  },
-
-  ["lukas-reineke/indent-blankline.nvim"] = {
-    opt = true,
-    requires = {"nvim-treesitter/nvim-treesitter", "navarasu/onedark.nvim"},
-    after = "nvim-treesitter",
-    config = function()
-      require("plugins.configs.blankline")
-    end
-  },
-
-  ["numToStr/Comment.nvim"] = {
-    module = "Comment",
-    key = {"<leader>/", "<leader>b/"},
-    config = function()
-      require("plugins.configs.comment")
-    end
-  },
-
-  ["lewis6991/gitsigns.nvim"] = {
-    opt = true,
-    setup = function()
-      require("core.events").gitsigns()
+  {
+    "akinsho/toggleterm.nvim",
+    keys = {
+      { "<A-t>", "<cmd>exe v:count1 . 'ToggleTerm'<cr>", mode = "n", desc = "toggle terminal" },
+      { "<A-a>", "<cmd>ToggleTermToggleAll<cr>", mode = "n", desc = "toggle all terminal" },
+      { "<A-s>", "<cmd>ToggleTermSendVisualSelection<cr>", mode = "n", desc = "send select text to terminal" },
+    },
+    opts = function()
+      return require("plugins.configs.toggleterm")
     end,
-    config = function()
-      require("plugins.configs.gitsigns")
-    end
   },
 
-  ["nvim-telescope/telescope.nvim"] = {
-    cmd = "Telescope",
-    requires = {"nvim-lua/plenary.nvim"},
-    config = function()
-      require("plugins.configs.telescope")
-    end
-  },
-
-  ["williamboman/nvim-lsp-installer"] = {},
-
-  ["neovim/nvim-lspconfig"] = {
-    after = "nvim-lsp-installer",
-    config = function()
-      require("plugins.configs.lspinstaller")
-      require("plugins.configs.lspconfig")
-    end
-  },
-
-  ["rafamadriz/friendly-snippets"] = {
-    module = "cmp_nvim_lsp",
-    event = "InsertEnter",
-  },
-
-  ["onsails/lspkind.nvim"] = {
-    after = "friendly-snippets"
-  },
-
-  ["hrsh7th/nvim-cmp"] = {
-    after = "lspkind.nvim",
-    config = function()
-      require("plugins.configs.cmp")
-    end
-  },
-
-  ["L3MON4D3/LuaSnip"] = {
-    wants = "friendly-snippets",
-    after = "nvim-cmp",
-    config = function()
-      require("plugins.configs.luasnip")
-    end
-  },
-
-  ["tzachar/cmp-tabnine"] = {
-    after = "nvim-cmp",
-    run = "./install.sh"
-  },
-
-  ["saadparwaiz1/cmp_luasnip"] = {
-    after = "LuaSnip"
-  },
-
-  ["hrsh7th/cmp-nvim-lua"] = {
-    after = "cmp_luasnip"
-  },
-
-  ["hrsh7th/cmp-nvim-lsp"] = {
-    after = "cmp-nvim-lua"
-  },
-
-  ["hrsh7th/cmp-buffer"] = {
-    after = "cmp-nvim-lsp"
-  },
-
-  ["hrsh7th/cmp-path"] = {
-    after = "cmp-buffer"
-  },
-
-  ["windwp/nvim-autopairs"] = {
-    after = "nvim-cmp",
-    config = function()
-      require("plugins.configs.autopairs")
-    end
-  },
-
-  -- only load whichkey after all the gui
-  ["folke/which-key.nvim"] = {
-    module = "which-key",
-    config = function()
-      require("plugins.configs.whichkey")
-    end
-  }
 }
 
-require("core.packer").run(plugins)
+local lazy_config = require("plugins.configs.lazy_nvim")
+
+require("lazy").setup(plugins, lazy_config)

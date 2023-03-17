@@ -1,9 +1,10 @@
 require("core")
-require("core.options")
 
-vim.defer_fn(function()
-  require("core.utils").load_mappings()
-end, 0)
+local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 
-require("core.packer").bootstrap()
+if not vim.loop.fs_stat(lazypath) then
+  require("core.lazy").bootstrap(lazypath)
+end
+
+vim.opt.rtp:prepend(lazypath)
 require("plugins")
