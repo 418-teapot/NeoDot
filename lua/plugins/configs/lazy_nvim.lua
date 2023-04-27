@@ -1,4 +1,4 @@
-return {
+local options = {
   defaults = {
     lazy = true
   },
@@ -41,8 +41,9 @@ return {
         "optwin",
         "compiler",
         "ftplugin",
-      },
-    },
-  },
+      }, -- disabled_plugins
+    }, -- rtp
+  }, -- performance
+} -- options
 
-}
+return options
