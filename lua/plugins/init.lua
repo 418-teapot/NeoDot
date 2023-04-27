@@ -74,6 +74,14 @@ local plugins = {
     end,
   },
 
+  {
+    "folke/which-key.nvim",
+    opts = {},
+    keys = {
+      { "<leader>wk", "<cmd>WhichKey<cr>", mode = "n", desc = "which-key all keymaps" },
+    },
+  },
+
 }
 
 local lazy_config = require("plugins.configs.lazy_nvim")
