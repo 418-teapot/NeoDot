@@ -33,10 +33,12 @@ local plugins = {
 
   {
     "akinsho/bufferline.nvim",
-    opts = {},
     event = {
       "BufEnter",
     },
+    opts = function()
+      return require("plugins.configs.bufferline")
+    end,
   },
 
   {
