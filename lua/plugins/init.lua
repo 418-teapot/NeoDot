@@ -36,6 +36,19 @@ local plugins = {
     event = {
       "BufEnter",
     },
+    keys = {
+      { "<Tab>", "<cmd>BufferLineCycleNext<cr>", mode = "n", desc = "goto next buffer" },
+      { "<S-Tab>", "<cmd>BufferLineCyclePrev<cr>", mode = "n", desc = "goto prev buffer" },
+      { "<leader>1", "<cmd>BufferLineGoToBuffer 1<cr>", mode = "n", desc = "goto buffer 1" },
+      { "<leader>2", "<cmd>BufferLineGoToBuffer 2<cr>", mode = "n", desc = "goto buffer 2" },
+      { "<leader>3", "<cmd>BufferLineGoToBuffer 3<cr>", mode = "n", desc = "goto buffer 3" },
+      { "<leader>4", "<cmd>BufferLineGoToBuffer 4<cr>", mode = "n", desc = "goto buffer 4" },
+      { "<leader>5", "<cmd>BufferLineGoToBuffer 5<cr>", mode = "n", desc = "goto buffer 5" },
+      { "<leader>6", "<cmd>BufferLineGoToBuffer 6<cr>", mode = "n", desc = "goto buffer 6" },
+      { "<leader>7", "<cmd>BufferLineGoToBuffer 7<cr>", mode = "n", desc = "goto buffer 7" },
+      { "<leader>8", "<cmd>BufferLineGoToBuffer 8<cr>", mode = "n", desc = "goto buffer 8" },
+      { "<leader>9", "<cmd>BufferLineGoToBuffer 9<cr>", mode = "n", desc = "goto buffer 9" },
+    },
     opts = function()
       return require("plugins.configs.bufferline")
     end,
