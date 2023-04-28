@@ -123,8 +123,17 @@ local plugins = {
   },
 
   {
-    "folke/which-key.nvim",
+    "lewis6991/gitsigns.nvim",
+    event = "VeryLazy",
+    keys = {
+      { "]h", "<cmd>lua require('gitsigns').next_hunk()<cr>", mode = "n", desc = "next hunk" },
+      { "[h", "<cmd>lua require('gitsigns').prev_hunk()<cr>", mode = "n", desc = "prev hunk" },
+    },
     opts = {},
+  },
+
+  {
+    "folke/which-key.nvim",
     keys = {
       { "<leader>wk", "<cmd>WhichKey<cr>", mode = "n", desc = "which-key all keymaps" },
     },
