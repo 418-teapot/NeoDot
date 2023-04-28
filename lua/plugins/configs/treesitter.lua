@@ -8,7 +8,7 @@ local options = {
   -- if you want to install the parsers to a custom directory
   -- you can use `parser_install_dir`
   -- the default path is:
-  -- ~/.local/share/nvim/site/pack/packer/opt/nvim-treesitter/parser
+  -- ~/.local/share/nvim/lazy/nvim-treesitter/parser
   ensure_installed = {
     "bash",
     "bibtex",
