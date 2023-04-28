@@ -153,6 +153,21 @@ local plugins = {
     },
   },
 
+  {
+    "williamboman/mason.nvim",
+    cmd = {
+      "Mason",
+      "MasonInstall",
+      "MasonInstallAll",
+      "MasonUninstall",
+      "MasonUninstallAll",
+      "MasonLog",
+    },
+    build = ":MasonUpdate",
+    config = function()
+      require("plugins.configs.mason")
+    end,
+  },
 }
 
 local lazy_config = require("plugins.configs.lazy_nvim")
