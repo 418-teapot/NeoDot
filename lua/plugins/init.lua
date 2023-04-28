@@ -126,8 +126,8 @@ local plugins = {
     "lewis6991/gitsigns.nvim",
     event = "VeryLazy",
     keys = {
-      { "]h", "<cmd>lua require('gitsigns').next_hunk()<cr>", mode = "n", desc = "next hunk" },
-      { "[h", "<cmd>lua require('gitsigns').prev_hunk()<cr>", mode = "n", desc = "prev hunk" },
+      { "]h", function() require("gitsigns").next_hunk() end, mode = "n", desc = "next hunk" },
+      { "[h", function() require("gitsigns").prev_hunk() end, mode = "n", desc = "prev hunk" },
     },
     opts = {},
   },
