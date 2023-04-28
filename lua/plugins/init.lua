@@ -110,6 +110,19 @@ local plugins = {
   },
 
   {
+    "numToStr/Comment.nvim",
+    keys = {
+      "<leader>c",
+      "<leader>b",
+      "<leader>cc",
+      "<leader>bc",
+    },
+    opts = function()
+      return require("plugins.configs.comment")
+    end,
+  },
+
+  {
     "folke/which-key.nvim",
     opts = {},
     keys = {
