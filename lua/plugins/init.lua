@@ -13,10 +13,6 @@ local plugins = {
   },
 
   {
-    "nvim-lua/plenary.nvim",
-  },
-
-  {
     "nvim-tree/nvim-web-devicons",
     opts = function()
       return require("plugins.configs.devicons")
@@ -131,6 +127,30 @@ local plugins = {
       { "<leader>wk", "<cmd>WhichKey<cr>", mode = "n", desc = "which-key all keymaps" },
     },
     opts = {},
+  },
+
+  {
+    "nvim-telescope/telescope.nvim",
+    cmd = "Telescope",
+    keys = {
+      -- find
+      { "<leader>ff", "<cmd>Telescope find_files<cr>", mode = "n", desc = "Find files" },
+      { "<leader>fa", "<cmd>Telescope find_files follow=true no_ignore=true hidden=true<cr>", mode = "n", desc = "Find all files" },
+      { "<leader>fg", "<cmd>Telescope live_grep<cr>", mode = "n", desc = "Find grep" },
+      { "<leader>fb", "<cmd>Telescope buffers<cr>", mode = "n", desc = "Find buffers" },
+      { "<leader>fo", "<cmd>Telescope oldfiles<cr>", mode = "n", desc = "Find oldfiles" },
+
+      -- git
+      { "<leader>gc", "<cmd>Telescope git_commits<cr>", mode = "n", desc = "Git commits" },
+      { "<leader>gs", "<cmd>Telescope git_status<cr>", mode = "n", desc = "Git status" },
+      { "<leader>gb", "<cmd>Telescope git_branches<cr>", mode = "n", desc = "Git branches" },
+    },
+    opts = function()
+      return require("plugins.configs.telescope")
+    end,
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+    },
   },
 
 }
