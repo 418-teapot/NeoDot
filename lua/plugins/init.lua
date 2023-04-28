@@ -25,17 +25,13 @@ local plugins = {
 
   {
     "nvim-lualine/lualine.nvim",
+    event = "BufEnter",
     opts = {},
-    event = {
-      "BufEnter",
-    },
   },
 
   {
     "akinsho/bufferline.nvim",
-    event = {
-      "BufEnter",
-    },
+    event = "BufEnter",
     keys = {
       { "<Tab>", "<cmd>BufferLineCycleNext<cr>", mode = "n", desc = "goto next buffer" },
       { "<S-Tab>", "<cmd>BufferLineCyclePrev<cr>", mode = "n", desc = "goto prev buffer" },
@@ -56,9 +52,7 @@ local plugins = {
 
   {
     "nvim-treesitter/nvim-treesitter",
-    event = {
-      "BufEnter",
-    },
+    event = "BufEnter",
     cmd = {
       "TSInstall",
       "TSBufEnable",
@@ -82,8 +76,6 @@ local plugins = {
       },
       {
         "nvim-treesitter/nvim-treesitter-context",
-      },
-      {
         "nvim-treesitter/nvim-treesitter-textobjects",
       },
     },
@@ -91,10 +83,10 @@ local plugins = {
 
   {
     "nvim-tree/nvim-tree.lua",
-    opts = {},
     keys = {
       { "<C-n>", "<cmd>NvimTreeToggle<cr>", mode = "n", desc = "toggle NvimTree" },
     },
+    opts = {},
   },
 
   {
@@ -124,7 +116,7 @@ local plugins = {
 
   {
     "lewis6991/gitsigns.nvim",
-    event = "VeryLazy",
+    event = "BufEnter",
     keys = {
       { "]h", function() require("gitsigns").next_hunk() end, mode = "n", desc = "next hunk" },
       { "[h", function() require("gitsigns").prev_hunk() end, mode = "n", desc = "prev hunk" },
@@ -134,9 +126,11 @@ local plugins = {
 
   {
     "folke/which-key.nvim",
+    event = "VeryLazy",
     keys = {
       { "<leader>wk", "<cmd>WhichKey<cr>", mode = "n", desc = "which-key all keymaps" },
     },
+    opts = {},
   },
 
 }
