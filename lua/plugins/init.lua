@@ -100,8 +100,8 @@ local plugins = {
   {
     "numToStr/Comment.nvim",
     keys = {
-      "<leader>c",
-      "<leader>b",
+      { "<leader>c", mode = { "n", "v" } },
+      { "<leader>b", mode = { "n", "v" } },
       "<leader>cc",
       "<leader>bc",
     },
