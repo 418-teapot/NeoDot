@@ -158,7 +158,6 @@ local plugins = {
     cmd = {
       "Mason",
       "MasonInstall",
-      "MasonInstallAll",
       "MasonUninstall",
       "MasonUninstallAll",
       "MasonLog",
