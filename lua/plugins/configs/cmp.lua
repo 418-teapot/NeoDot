@@ -1,6 +1,5 @@
 local cmp = require("cmp")
 local luasnip = require("luasnip")
-local lspkind = require("lspkind")
 
 local options = {
   completion = {
@@ -16,21 +15,8 @@ local options = {
     { name = "nvim_lsp" },
     { name = "buffer" },
     { name = "path" },
+    { name = "cmp_tabnine" },
   }),
-  formatting = {
-    format = lspkind.cmp_format({
-      before = function(entry, vim_item)
-        vim_item.kind = lspkind.presets.default[vim_item.kind] .. " " .. vim_item.kind
-        if entry.source.name == "cmp_tabnine" then
-          if entry.completion_item.data ~= nil and entry.completion_item.data.detail ~= nil then
-            vim_item.menu = entry.completion_item.data.detail
-          end
-          vim_item.kind = "⌬ TabNine"
-        end
-        return vim_item
-      end
-    })
-  },
   mapping = cmp.mapping.preset.insert({
     ["<Tab>"] = cmp.mapping(function(fallback)
       if cmp.visible() then
