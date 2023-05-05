@@ -20,6 +20,16 @@ local plugins = {
       return require("plugins.configs.cmp")
     end,
   },
+  {
+    "windwp/nvim-autopairs",
+    event = "InsertEnter",
+    dependencies = {
+      "nvim-cmp",
+    },
+    config = function()
+      require("plugins.configs.autopairs")
+    end,
+  },
 }
 
 return plugins
