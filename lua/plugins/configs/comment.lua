@@ -1,14 +1,15 @@
-local present, comment = pcall(require, "Comment")
-
-if not present then
-  return
-end
-
 local options = {
+  toggler = {
+    line = "<leader>cc",
+    block = "<leader>bc",
+  },
+  opleader = {
+    line = "<leader>c",
+    block = "<leader>b",
+  },
   mappings = {
-    basic = false,
-    extra = false
-  }
+    extra = false,
+  },
 }
 
-comment.setup(options)
+return options

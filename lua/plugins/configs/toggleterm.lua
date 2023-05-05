@@ -1,9 +1,3 @@
-local present, toggleterm = pcall(require, "toggleterm")
-
-if not present then
-  return
-end
-
 local options = {
   size = function(term)
     if term.direction == "horizontal" then
@@ -13,7 +7,7 @@ local options = {
     end
   end,
   shade_terminals = false,
-  shell = "bash"
+  shell = "bash",
 }
 
-toggleterm.setup(options)
+return options

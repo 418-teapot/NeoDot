@@ -8,7 +8,7 @@ local options = {
   -- if you want to install the parsers to a custom directory
   -- you can use `parser_install_dir`
   -- the default path is:
-  -- ~/.local/share/nvim/site/pack/packer/opt/nvim-treesitter/parser
+  -- ~/.local/share/nvim/lazy/nvim-treesitter/parser
   ensure_installed = {
     "bash",
     "bibtex",
@@ -21,6 +21,7 @@ local options = {
     "cuda",
     "dockerfile",
     "go",
+    "haskell",
     "html",
     "java",
     "javascript",
@@ -37,14 +38,15 @@ local options = {
     "rust",
     "scala",
     "typescript",
+    "toml",
     "verilog",
     "vim",
     "yaml"
-  },
+  }, -- ensure_installed
   highlight = {
     enable = true,
     use_languagetree = true
-  },
+  }, -- highlight
   incremental_selection = {
     enable = true,
     keymaps = {
@@ -52,11 +54,8 @@ local options = {
       node_incremental = "<CR>",
       scope_incremental = "<TAB>",
       node_decremental = "<BS>"
-    }
-  },
-  -- indent = {
-  --   enable = true
-  -- },
+    }, -- keymap
+  }, -- incremental_selection
   textobjects = {
     select = {
       enable = true,
@@ -66,12 +65,9 @@ local options = {
         ["if"] = "@function.inner",
         ["ac"] = "@class.outer",
         ["ic"] = "@class.inner"
-      }
-    }
-  }
-}
-
-vim.wo.foldmethod = "expr"
-vim.wo.foldexpr = "nvim_treesitter#foldexpr()"
+      },
+    }, -- select
+  }, -- textobjects
+} -- options
 
 treesitter.setup(options)

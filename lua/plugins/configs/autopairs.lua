@@ -1,9 +1,6 @@
-local present1, autopairs = pcall(require, "nvim-autopairs")
-local present2, cmp = pcall(require, "cmp")
-
-if not (present1 and present2) then
-  return
-end
+local autopairs = require("nvim-autopairs")
+local cmp = require("cmp")
+local cmp_autopairs = require("nvim-autopairs.completion.cmp")
 
 local options = {
   fast_wrap = {},
@@ -12,5 +9,7 @@ local options = {
 
 autopairs.setup(options)
 
-local cmp_autopairs = require("nvim-autopairs.completion.cmp")
-cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done())
+cmp.event:on(
+  "confirm_done",
+  cmp_autopairs.on_confirm_done()
+)
