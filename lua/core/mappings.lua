@@ -15,7 +15,7 @@ end
 map("i", "<C-a>", "<ESC>^i", "Start of line")
 map("i", "<C-e>", "<End>", "End of line")
 map("i", "<C-h>", "<Left>", "Move left")
-map("i", "<C-i>", "<Right>", "Move right")
+map("i", "<C-l>", "<Right>", "Move right")
 map("i", "<C-j>", "<Down>", "Move down")
 map("i", "<C-k>", "<Up>", "Move up")
 
