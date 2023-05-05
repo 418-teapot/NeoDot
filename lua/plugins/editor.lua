@@ -93,6 +93,17 @@ local plugins = {
     },
     opts = {},
   },
+
+  {
+    "folke/trouble.nvim",
+    cmd = {
+      "TroubleToggle",
+      "Trouble",
+    },
+    opts = {
+      use_diagnostic_signs = true,
+    },
+  },
 }
 
 return plugins
