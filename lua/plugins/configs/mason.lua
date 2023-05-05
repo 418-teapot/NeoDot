@@ -1,7 +1,8 @@
 local ensure_installed = {
-  "bash-language-server",
-  "clangd",
-  "lua-language-server",
+  -- DAP
+  "codelldb",
+  -- Linter
+  -- Formatter
 }
 
 require("mason").setup({})
