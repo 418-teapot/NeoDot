@@ -37,6 +37,7 @@ local options = {
     "ruby",
     "rust",
     "scala",
+    "tablegen",
     "typescript",
     "toml",
     "verilog",
