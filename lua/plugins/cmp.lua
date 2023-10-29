@@ -14,10 +14,6 @@ local plugins = {
           "rafamadriz/friendly-snippets",
         },
       },
-      {
-        "tzachar/cmp-tabnine",
-        build = "./install.sh"
-      },
     }, -- dependencies
     opts = function()
       return require("plugins.configs.cmp")

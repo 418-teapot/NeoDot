@@ -15,7 +15,6 @@ local options = {
     { name = "nvim_lsp" },
     { name = "buffer" },
     { name = "path" },
-    { name = "cmp_tabnine" },
   }),
   mapping = cmp.mapping.preset.insert({
     ["<Tab>"] = cmp.mapping(function(fallback)
