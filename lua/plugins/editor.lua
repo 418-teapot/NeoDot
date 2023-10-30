@@ -68,6 +68,10 @@ local plugins = {
       { "<leader>gc", "<cmd>Telescope git_commits<cr>", mode = "n", desc = "Git commits" },
       { "<leader>gs", "<cmd>Telescope git_status<cr>", mode = "n", desc = "Git status" },
       { "<leader>gb", "<cmd>Telescope git_branches<cr>", mode = "n", desc = "Git branches" },
+
+      -- lsp
+      { "<leader>d", "<cmd>Telescope lsp_definitions<cr>", mode = "n", desc = "Goto definition" },
+      { "<leader>r", "<cmd>Telescope lsp_references<cr>", mode = "n", desc = "Goto reference" },
     },
     opts = function()
       return require("plugins.configs.telescope")
