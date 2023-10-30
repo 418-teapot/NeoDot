@@ -31,6 +31,7 @@ local options = {
     "lua",
     "make",
     "markdown",
+    "mlir",
     "ocaml",
     "perl",
     "python",
