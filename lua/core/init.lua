@@ -98,5 +98,6 @@ local autocmds = require("core.events")
 
 autocmds.set_filetype()
 autocmds.set_indent()
+autocmds.set_comment_string()
 autocmds.no_comment()
 autocmds.auto_jump()

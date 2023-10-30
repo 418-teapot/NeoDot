@@ -36,6 +36,18 @@ M.set_indent = function()
   })
 end
 
+-- set comment string for different file types
+M.set_comment_string = function()
+  local group = augroup("SetCommentString", {})
+  autocmd("FileType", {
+    pattern = { "mlir", "tablegen" },
+    group = group,
+    callback = function()
+      vim.bo.commentstring = "// %s"
+    end
+  })
+end
+
 -- don't auto commenting new lines
 M.no_comment = function()
   local group = augroup("NoComment", {})
