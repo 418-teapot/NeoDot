@@ -4,7 +4,7 @@ local augroup = vim.api.nvim_create_augroup
 local autocmd = vim.api.nvim_create_autocmd
 
 -- set filetype
-M.filetype = function()
+M.set_filetype = function()
   local group = augroup("SetFileType", {})
   autocmd({ "BufNewFile", "BufRead" }, {
     pattern = "*.mlir",
@@ -16,8 +16,8 @@ M.filetype = function()
 end
 
 -- set indent for different file types
-M.indent = function()
-  local group = augroup("Indent", {})
+M.set_indent = function()
+  local group = augroup("SetIndent", {})
   autocmd("FileType", {
     pattern = "make",
     group = group,
@@ -37,8 +37,8 @@ M.indent = function()
 end
 
 -- don't auto commenting new lines
-M.comment = function()
-  local group = augroup("Comments", {})
+M.no_comment = function()
+  local group = augroup("NoComment", {})
   autocmd("BufEnter", {
     pattern = "*",
     group = group,
@@ -49,8 +49,8 @@ M.comment = function()
 end
 
 -- auto jump to the last viewed position
-M.jump = function()
-  local group = augroup("Jump", {})
+M.auto_jump = function()
+  local group = augroup("AutoJump", {})
   autocmd("BufWinEnter", {
     pattern = "*",
     group = group,

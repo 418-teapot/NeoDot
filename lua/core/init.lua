@@ -96,7 +96,7 @@ require("core.mappings")
 --------------------------------- autocmds -------------------------------------
 local autocmds = require("core.events")
 
-autocmds.filetype()
-autocmds.indent()
-autocmds.comment()
-autocmds.jump()
+autocmds.set_filetype()
+autocmds.set_indent()
+autocmds.no_comment()
+autocmds.auto_jump()
