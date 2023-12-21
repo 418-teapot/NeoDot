@@ -17,6 +17,7 @@ local options = {
       "terminal",
     }
   },
+  indent = { char = "│" },
 }
 
 return options
