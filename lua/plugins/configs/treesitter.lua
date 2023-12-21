@@ -73,3 +73,19 @@ local options = {
 } -- options
 
 treesitter.setup(options)
+
+local parsers
+present, parsers = pcall(require, "nvim-treesitter.parsers")
+
+if not present then
+  return
+end
+
+parsers.get_parser_configs().typst = {
+  install_info = {
+    url = "https://github.com/SeniorMars/tree-sitter-typst",
+    files = { "src/parser.c", "src/scanner.c" },
+    branch = "main",
+  },
+  filetype = "typ",
+}
