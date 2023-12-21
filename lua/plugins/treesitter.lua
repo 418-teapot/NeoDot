@@ -21,6 +21,7 @@ local plugins = {
     dependencies = {
       {
         "lukas-reineke/indent-blankline.nvim",
+        main = "ibl",
         opts = function()
           return require("plugins.configs.blankline")
         end,
