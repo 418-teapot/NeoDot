@@ -15,6 +15,7 @@ local options = {
       "lazy",
       "mason",
       "terminal",
+      "vimdoc",
     }
   },
   indent = { char = "│" },

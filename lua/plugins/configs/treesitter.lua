@@ -47,7 +47,8 @@ local options = {
   }, -- ensure_installed
   highlight = {
     enable = true,
-    use_languagetree = true
+    use_languagetree = true,
+    disable = { "vimdoc" },
   }, -- highlight
   incremental_selection = {
     enable = true,
