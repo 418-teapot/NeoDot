@@ -12,7 +12,7 @@ opt.foldlevelstart = 99
 -- in visual block mode
 opt.virtualedit = "block"
 
--- ebable 24-bit RGB color in the TUI
+-- enable 24-bit RGB color in the TUI
 opt.termguicolors = true
 
 -- only the last window have a status line
