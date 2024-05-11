@@ -19,6 +19,7 @@ local plugins = {
       return require("plugins.configs.cmp")
     end,
   },
+
   {
     "windwp/nvim-autopairs",
     event = "InsertEnter",

@@ -6,7 +6,12 @@ local g = vim.g
 g.mapleader = " "
 
 -- always start editing with no code folds
+opt.foldcolumn = "1"
+opt.foldlevel = 99
 opt.foldlevelstart = 99
+
+-- set fold character
+opt.fillchars = [[eob: ,fold: ,foldopen:,foldsep: ,foldclose:]]
 
 -- allow the cursor can be positioned where there is no actual character
 -- in visual block mode

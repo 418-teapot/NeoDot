@@ -108,6 +108,30 @@ local plugins = {
       use_diagnostic_signs = true,
     },
   },
+
+  {
+    "kevinhwang91/nvim-ufo",
+    event = {
+      "BufReadPost",
+      "BufNewFile",
+    },
+    keys = {
+      { "zR", function() require("ufo").openAllFolds() end, desc = "Open all folds" },
+      { "zM", function() require("ufo").closeAllFolds() end, desc = "Close all folds" },
+    },
+    opts = function()
+      return require("plugins.configs.fold")
+    end,
+    dependencies = {
+      "kevinhwang91/promise-async",
+      {
+        "luukvbaal/statuscol.nvim",
+        opts = function()
+          return require("plugins.configs.statuscol")
+        end,
+      }
+    }
+  },
 }
 
 return plugins
