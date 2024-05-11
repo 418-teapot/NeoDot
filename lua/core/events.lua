@@ -13,6 +13,13 @@ M.set_filetype = function()
       vim.bo.filetype = "mlir"
     end
   })
+  autocmd({ "BufNewFile", "BufRead" }, {
+    pattern = "*.mlu",
+    group = group,
+    callback = function()
+      vim.bo.filetype = "cpp"
+    end
+  })
 end
 
 -- set indent for different file types
