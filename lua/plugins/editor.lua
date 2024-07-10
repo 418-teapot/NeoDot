@@ -14,7 +14,7 @@ local plugins = {
     keys = {
       { "<A-t>", "<cmd>exe v:count1 . 'ToggleTerm'<cr>", mode = "n", desc = "toggle terminal" },
       { "<A-a>", "<cmd>ToggleTermToggleAll<cr>", mode = "n", desc = "toggle all terminal" },
-      { "<A-s>", "<cmd>ToggleTermSendVisualSelection<cr>", mode = "n", desc = "send select text to terminal" },
+      -- { "<A-s>", "<cmd>ToggleTermSendVisualSelection<cr>", mode = "n", desc = "send select text to terminal" },
     },
     opts = function()
       return require("plugins.configs.toggleterm")
@@ -131,6 +131,14 @@ local plugins = {
         end,
       }
     }
+  },
+
+  {
+    "Bekaboo/dropbar.nvim",
+    event = {
+      "BufReadPost",
+      "BufNewFile",
+    },
   },
 }
 
