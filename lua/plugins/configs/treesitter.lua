@@ -43,12 +43,12 @@ local options = {
     "toml",
     "verilog",
     "vim",
+    "vimdoc",
     "yaml"
   }, -- ensure_installed
   highlight = {
     enable = true,
     use_languagetree = true,
-    disable = { "vimdoc" },
   }, -- highlight
   incremental_selection = {
     enable = true,
