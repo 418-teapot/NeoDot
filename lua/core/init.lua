@@ -67,7 +67,7 @@ opt.mouse = "a"
 
 -- go to previous/next line with h, l, left and right arrow when cursor
 -- reaches end/beginning of line
-opt.whichwrap:append "<>[]hl"
+opt.whichwrap:append("<>[]hl")
 
 -- ignore case when the pattern contains lowercase letters only
 opt.ignorecase = true

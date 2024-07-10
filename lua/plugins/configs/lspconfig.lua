@@ -8,22 +8,24 @@ local servers = {
     settings = {
       Lua = {
         diagnostics = {
-          globals = { "vim" }
+          globals = { "vim" },
         },
-      }
-    }
+      },
+    },
   },
   rust_analyzer = {},
 }
 
-local capabilities = vim.tbl_deep_extend("force",
+local capabilities = vim.tbl_deep_extend(
+  "force",
   {},
   vim.lsp.protocol.make_client_capabilities(),
   require("cmp_nvim_lsp").default_capabilities()
 )
 
 local setup = function(server)
-  local server_opts = vim.tbl_deep_extend("force",
+  local server_opts = vim.tbl_deep_extend(
+    "force",
     { capabilities = vim.deepcopy(capabilities) },
     servers[server] or {}
   )

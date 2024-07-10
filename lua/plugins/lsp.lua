@@ -25,8 +25,18 @@ local plugins = {
     keys = {
       { "]d", vim.diagnostic.goto_next, mode = "n", desc = "Next diagnostic" },
       { "[d", vim.diagnostic.goto_prev, mode = "n", desc = "Prev diagnostic" },
-      { "<leader>e", vim.diagnostic.open_float, mode = "n", desc = "Diagnostic float window" },
-      { "<leader>q", vim.diagnostic.setloclist, mode = "n", desc = "Diagnostic float window" },
+      {
+        "<leader>e",
+        vim.diagnostic.open_float,
+        mode = "n",
+        desc = "Diagnostic float window",
+      },
+      {
+        "<leader>q",
+        vim.diagnostic.setloclist,
+        mode = "n",
+        desc = "Diagnostic float window",
+      },
     },
     dependencies = {
       "mason.nvim",

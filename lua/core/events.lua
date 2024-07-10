@@ -11,14 +11,14 @@ M.set_filetype = function()
     group = group,
     callback = function()
       vim.bo.filetype = "mlir"
-    end
+    end,
   })
   autocmd({ "BufNewFile", "BufRead" }, {
     pattern = "*.mlu",
     group = group,
     callback = function()
       vim.bo.filetype = "cpp"
-    end
+    end,
   })
 end
 
@@ -30,16 +30,26 @@ M.set_indent = function()
     group = group,
     callback = function()
       vim.bo.expandtab = false
-    end
+    end,
   })
   autocmd("FileType", {
-    pattern = { "c", "cpp", "cc", "js", "ts", "lua", "rust", "mlir", "tablegen" },
+    pattern = {
+      "c",
+      "cpp",
+      "cc",
+      "js",
+      "ts",
+      "lua",
+      "rust",
+      "mlir",
+      "tablegen",
+    },
     group = group,
     callback = function()
       vim.bo.shiftwidth = 2
       vim.bo.tabstop = 2
       vim.bo.softtabstop = 2
-    end
+    end,
   })
 end
 
@@ -51,7 +61,7 @@ M.set_comment_string = function()
     group = group,
     callback = function()
       vim.bo.commentstring = "// %s"
-    end
+    end,
   })
 end
 
@@ -63,7 +73,7 @@ M.no_comment = function()
     group = group,
     callback = function()
       vim.bo.formatoptions = "jql"
-    end
+    end,
   })
 end
 
@@ -79,7 +89,7 @@ M.auto_jump = function()
       if lastline ~= 0 then
         vim.api.nvim_win_set_cursor(0, lastview)
       end
-    end
+    end,
   })
 end
 

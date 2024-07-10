@@ -13,7 +13,7 @@ local options = {
     set_ebv = {
       ["COLORTERM"] = "truecolor",
     },
-  }
+  },
 }
 
 return options

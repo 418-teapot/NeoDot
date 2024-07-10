@@ -44,7 +44,7 @@ local options = {
     "verilog",
     "vim",
     "vimdoc",
-    "yaml"
+    "yaml",
   }, -- ensure_installed
   highlight = {
     enable = true,
@@ -56,7 +56,7 @@ local options = {
       init_selection = "<CR>",
       node_incremental = "<CR>",
       scope_incremental = "<TAB>",
-      node_decremental = "<BS>"
+      node_decremental = "<BS>",
     }, -- keymap
   }, -- incremental_selection
   textobjects = {
@@ -67,7 +67,7 @@ local options = {
         ["af"] = "@function.outer",
         ["if"] = "@function.inner",
         ["ac"] = "@class.outer",
-        ["ic"] = "@class.inner"
+        ["ic"] = "@class.inner",
       },
     }, -- select
   }, -- textobjects

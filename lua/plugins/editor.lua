@@ -4,7 +4,12 @@ local plugins = {
   {
     "nvim-tree/nvim-tree.lua",
     keys = {
-      { "<C-n>", "<cmd>NvimTreeToggle<cr>", mode = "n", desc = "toggle NvimTree" },
+      {
+        "<C-n>",
+        "<cmd>NvimTreeToggle<cr>",
+        mode = "n",
+        desc = "toggle NvimTree",
+      },
     },
     opts = {},
   },
@@ -12,8 +17,18 @@ local plugins = {
   {
     "akinsho/toggleterm.nvim",
     keys = {
-      { "<A-t>", "<cmd>exe v:count1 . 'ToggleTerm'<cr>", mode = "n", desc = "toggle terminal" },
-      { "<A-a>", "<cmd>ToggleTermToggleAll<cr>", mode = "n", desc = "toggle all terminal" },
+      {
+        "<A-t>",
+        "<cmd>exe v:count1 . 'ToggleTerm'<cr>",
+        mode = "n",
+        desc = "toggle terminal",
+      },
+      {
+        "<A-a>",
+        "<cmd>ToggleTermToggleAll<cr>",
+        mode = "n",
+        desc = "toggle all terminal",
+      },
       -- { "<A-s>", "<cmd>ToggleTermSendVisualSelection<cr>", mode = "n", desc = "send select text to terminal" },
     },
     opts = function()
@@ -38,8 +53,22 @@ local plugins = {
     "lewis6991/gitsigns.nvim",
     event = "BufEnter",
     keys = {
-      { "]h", function() require("gitsigns").next_hunk() end, mode = "n", desc = "next hunk" },
-      { "[h", function() require("gitsigns").prev_hunk() end, mode = "n", desc = "prev hunk" },
+      {
+        "]h",
+        function()
+          require("gitsigns").next_hunk()
+        end,
+        mode = "n",
+        desc = "next hunk",
+      },
+      {
+        "[h",
+        function()
+          require("gitsigns").prev_hunk()
+        end,
+        mode = "n",
+        desc = "prev hunk",
+      },
     },
     opts = {},
   },
@@ -48,7 +77,12 @@ local plugins = {
     "folke/which-key.nvim",
     event = "VeryLazy",
     keys = {
-      { "<leader>wk", "<cmd>WhichKey<cr>", mode = "n", desc = "which-key all keymaps" },
+      {
+        "<leader>wk",
+        "<cmd>WhichKey<cr>",
+        mode = "n",
+        desc = "which-key all keymaps",
+      },
     },
     opts = {},
   },
@@ -58,20 +92,70 @@ local plugins = {
     cmd = "Telescope",
     keys = {
       -- find
-      { "<leader>ff", "<cmd>Telescope find_files<cr>", mode = "n", desc = "Find files" },
-      { "<leader>fa", "<cmd>Telescope find_files follow=true no_ignore=true hidden=true<cr>", mode = "n", desc = "Find all files" },
-      { "<leader>fg", "<cmd>Telescope live_grep<cr>", mode = "n", desc = "Find grep" },
-      { "<leader>fb", "<cmd>Telescope buffers<cr>", mode = "n", desc = "Find buffers" },
-      { "<leader>fo", "<cmd>Telescope oldfiles<cr>", mode = "n", desc = "Find oldfiles" },
+      {
+        "<leader>ff",
+        "<cmd>Telescope find_files<cr>",
+        mode = "n",
+        desc = "Find files",
+      },
+      {
+        "<leader>fa",
+        "<cmd>Telescope find_files follow=true no_ignore=true hidden=true<cr>",
+        mode = "n",
+        desc = "Find all files",
+      },
+      {
+        "<leader>fg",
+        "<cmd>Telescope live_grep<cr>",
+        mode = "n",
+        desc = "Find grep",
+      },
+      {
+        "<leader>fb",
+        "<cmd>Telescope buffers<cr>",
+        mode = "n",
+        desc = "Find buffers",
+      },
+      {
+        "<leader>fo",
+        "<cmd>Telescope oldfiles<cr>",
+        mode = "n",
+        desc = "Find oldfiles",
+      },
 
       -- git
-      { "<leader>gc", "<cmd>Telescope git_commits<cr>", mode = "n", desc = "Git commits" },
-      { "<leader>gs", "<cmd>Telescope git_status<cr>", mode = "n", desc = "Git status" },
-      { "<leader>gb", "<cmd>Telescope git_branches<cr>", mode = "n", desc = "Git branches" },
+      {
+        "<leader>gc",
+        "<cmd>Telescope git_commits<cr>",
+        mode = "n",
+        desc = "Git commits",
+      },
+      {
+        "<leader>gs",
+        "<cmd>Telescope git_status<cr>",
+        mode = "n",
+        desc = "Git status",
+      },
+      {
+        "<leader>gb",
+        "<cmd>Telescope git_branches<cr>",
+        mode = "n",
+        desc = "Git branches",
+      },
 
       -- lsp
-      { "<leader>d", "<cmd>Telescope lsp_definitions<cr>", mode = "n", desc = "Goto definition" },
-      { "<leader>r", "<cmd>Telescope lsp_references<cr>", mode = "n", desc = "Goto reference" },
+      {
+        "<leader>d",
+        "<cmd>Telescope lsp_definitions<cr>",
+        mode = "n",
+        desc = "Goto definition",
+      },
+      {
+        "<leader>r",
+        "<cmd>Telescope lsp_references<cr>",
+        mode = "n",
+        desc = "Goto reference",
+      },
     },
     opts = function()
       return require("plugins.configs.telescope")
@@ -92,8 +176,20 @@ local plugins = {
       "BufNewFile",
     },
     keys = {
-      { "]t", function() require("todo-comments").jump_next() end, desc = "Next todo comment" },
-      { "[t", function() require("todo-comments").jump_prev() end, desc = "Prev todo comment" },
+      {
+        "]t",
+        function()
+          require("todo-comments").jump_next()
+        end,
+        desc = "Next todo comment",
+      },
+      {
+        "[t",
+        function()
+          require("todo-comments").jump_prev()
+        end,
+        desc = "Prev todo comment",
+      },
     },
     opts = {},
   },
@@ -116,8 +212,20 @@ local plugins = {
       "BufNewFile",
     },
     keys = {
-      { "zR", function() require("ufo").openAllFolds() end, desc = "Open all folds" },
-      { "zM", function() require("ufo").closeAllFolds() end, desc = "Close all folds" },
+      {
+        "zR",
+        function()
+          require("ufo").openAllFolds()
+        end,
+        desc = "Open all folds",
+      },
+      {
+        "zM",
+        function()
+          require("ufo").closeAllFolds()
+        end,
+        desc = "Close all folds",
+      },
     },
     opts = function()
       return require("plugins.configs.fold")
@@ -129,8 +237,8 @@ local plugins = {
         opts = function()
           return require("plugins.configs.statuscol")
         end,
-      }
-    }
+      },
+    },
   },
 
   {

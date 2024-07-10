@@ -4,21 +4,21 @@ local icons = {
       icon = "",
       color = "#ff5722",
       cterm_color = "179",
-      name = "License"
+      name = "License",
     },
     markdown = {
       icon = "",
       color = "#519aba",
       cterm_color = "67",
-      name = "Markdown"
+      name = "Markdown",
     },
     md = {
       icon = "",
       color = "#519aba",
       cterm_color = "67",
-      name = "Markdown"
+      name = "Markdown",
     },
-  };
+  },
 }
 
 return icons

@@ -49,4 +49,9 @@ map("v", "<A-j>", ":m '>+1<cr>gv=gv", "Move down")
 map("v", "<A-k>", ":m '<-2<cr>gv=gv", "Move up")
 
 -- Termianl
-map("t", "<ESC>", vim.api.nvim_replace_termcodes("<C-\\><C-n>", true, true, true), "Escape terminal")
+map(
+  "t",
+  "<ESC>",
+  vim.api.nvim_replace_termcodes("<C-\\><C-n>", true, true, true),
+  "Escape terminal"
+)

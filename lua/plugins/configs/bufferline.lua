@@ -5,10 +5,10 @@ local options = {
         filetype = "NvimTree",
         text = "פּ File Explorer",
         highlight = "Directory",
-        text_align = "left"
+        text_align = "left",
       },
     }, -- offsets
-  }
+  },
 }
 
 return options
