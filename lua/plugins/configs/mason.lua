@@ -1,4 +1,12 @@
 local ensure_installed = {
+  -- LSP
+  "bash-language-server",
+  "clangd",
+  "lua-language-server",
+  "ruff",
+  "ruff-lsp",
+  "rust-analyzer",
+  "zls",
   -- DAP
   "codelldb",
   -- Linter
