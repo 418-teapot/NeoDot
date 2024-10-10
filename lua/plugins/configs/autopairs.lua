@@ -3,7 +3,6 @@ local cmp = require("cmp")
 local cmp_autopairs = require("nvim-autopairs.completion.cmp")
 
 local options = {
-  fast_wrap = {},
   disable_filetype = { "TelescopePrompt", "vim" },
 }
 

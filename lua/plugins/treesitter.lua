@@ -28,6 +28,14 @@ local plugins = {
       },
       {
         "nvim-treesitter/nvim-treesitter-context",
+        opts = function()
+          require("treesitter-context").setup({
+            max_lines = 3,
+            trim_scope = "inner",
+          })
+        end,
+      },
+      {
         "nvim-treesitter/nvim-treesitter-textobjects",
       },
     },
