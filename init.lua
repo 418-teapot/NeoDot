@@ -8,5 +8,5 @@ end
 
 vim.opt.rtp:prepend(lazypath)
 
-local lazy_config = require("plugins.configs.lazy_nvim")
+local lazy_config = require("core.lazy").options
 require("lazy").setup("plugins", lazy_config)

@@ -1,3 +1,5 @@
+-- All plugins have lazy = true by default.
+
 local options = {
   exclude = {
     filetypes = {
@@ -21,4 +23,14 @@ local options = {
   indent = { char = "│" },
 }
 
-return options
+local plugin = {
+  {
+    "lukas-reineke/indent-blankline.nvim",
+    main = "ibl",
+    opts = function()
+      return options
+    end,
+  },
+}
+
+return plugin
