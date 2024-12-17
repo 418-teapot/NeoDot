@@ -37,7 +37,28 @@ opt.showtabline = 0
 opt.showbreak = "↳  "
 
 -- use + register as system clipboard for cross-platform
-opt.clipboard = "unnamedplus"
+opt.clipboard:append("unnamedplus")
+
+local function my_paste(_)
+  return function(_)
+    local content = vim.fn.getreg('"')
+    return vim.split(content, "\n")
+  end
+end
+
+g.clipboard = {
+  name = "OSC 52",
+  copy = {
+    ["+"] = require("vim.ui.clipboard.osc52").copy("+"),
+    ["*"] = require("vim.ui.clipboard.osc52").copy("*"),
+  },
+  -- no OSC52 paste action since wezterm doesn't support it
+  -- should still paste from nvim
+  paste = {
+    ["+"] = my_paste("+"),
+    ["*"] = my_paste("*"),
+  },
+}
 
 -- show the line number relative to line with the cursor
 opt.number = true
