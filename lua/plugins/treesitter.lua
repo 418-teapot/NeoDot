@@ -28,6 +28,7 @@ local options = {
     "make",
     "markdown",
     "mlir",
+    "nu",
     "ocaml",
     "perl",
     "python",

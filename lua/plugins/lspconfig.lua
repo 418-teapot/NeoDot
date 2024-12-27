@@ -29,6 +29,7 @@ local servers = {
       },
     },
   },
+  nushell = false,
   rust_analyzer = {},
 }
 
@@ -58,6 +59,9 @@ local config = function()
     if server_opts then
       server_opts = server_opts == true and {} or server_opts
       ensure_installed[#ensure_installed + 1] = server
+    else
+      -- lspconfig builtin support
+      lsp[server].setup({})
     end
   end
 
