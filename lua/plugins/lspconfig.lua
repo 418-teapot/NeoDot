@@ -18,6 +18,7 @@ local keys = {
 }
 
 local servers = {
+  -- Mason lsp
   bashls = {},
   clangd = {},
   lua_ls = {
@@ -29,8 +30,12 @@ local servers = {
       },
     },
   },
-  nushell = false,
   rust_analyzer = {},
+  -- Builtin lsp
+  nushell = false,
+  mlir_lsp_server = false,
+  mlir_pdll_lsp_server = false,
+  tblgen_lsp_server = false,
 }
 
 local capabilities = vim.tbl_deep_extend(
@@ -61,12 +66,14 @@ local config = function()
       ensure_installed[#ensure_installed + 1] = server
     else
       -- lspconfig builtin support
-      lsp[server].setup({})
+      vim.lsp.enable(server)
     end
   end
 
-  mlsp.setup({ ensure_installed = ensure_installed })
-  mlsp.setup_handlers({ setup })
+  mlsp.setup({
+    ensure_installed = ensure_installed,
+    handlers = setup,
+  })
 end
 
 local plugin = {
