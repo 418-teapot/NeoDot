@@ -14,6 +14,13 @@ M.set_filetype = function()
     end,
   })
   autocmd({ "BufNewFile", "BufRead" }, {
+    pattern = "*.pdll",
+    group = group,
+    callback = function()
+      vim.bo.filetype = "pdll"
+    end,
+  })
+  autocmd({ "BufNewFile", "BufRead" }, {
     pattern = "*.mlu",
     group = group,
     callback = function()
