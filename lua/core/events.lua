@@ -21,6 +21,13 @@ M.set_filetype = function()
     end,
   })
   autocmd({ "BufNewFile", "BufRead" }, {
+    pattern = "*.td",
+    group = group,
+    callback = function()
+      vim.bo.filetype = "tablegen"
+    end,
+  })
+  autocmd({ "BufNewFile", "BufRead" }, {
     pattern = "*.mlu",
     group = group,
     callback = function()
