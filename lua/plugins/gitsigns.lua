@@ -17,6 +17,14 @@ local keys = {
     mode = "n",
     desc = "prev hunk",
   },
+  {
+    "<leader>gb",
+    function()
+      require("gitsigns").blame()
+    end,
+    mode = "n",
+    desc = "Git blame",
+  },
 }
 
 local plugin = {
