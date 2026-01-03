@@ -5,8 +5,8 @@ local ensure_installed = {
   "bash-language-server",
   "clangd",
   "lua-language-server",
+  "python-lsp-server",
   "ruff",
-  "ruff-lsp",
   "rust-analyzer",
   "zls",
   -- DAP
