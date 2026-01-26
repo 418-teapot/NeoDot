@@ -4,9 +4,9 @@ local ui_keys = {
   {
     "<A-t>",
     function()
-      require("nvchad.term").toggle { pos = "sp", id = "xz"}
+      require("nvchad.term").toggle({ pos = "sp", id = "xz" })
     end,
-    mode = {"n", "t"},
+    mode = { "n", "t" },
     desc = "toggle terminal",
   },
 }
@@ -15,11 +15,13 @@ local menu_keys = {
   {
     "<RightMouse>",
     function()
+      require("menu.utils").delete_old_menus()
+
       vim.cmd.exec('"normal! \\<RightMouse>"')
       local options = vim.bo.ft == "NvimTree" and "nvimtree" or "default"
       require("menu").open(options, { mouse = true })
     end,
-    mode = "n",
+    mode = { "n", "v" },
     desc = "Open menu",
   },
 }
@@ -42,11 +44,13 @@ local plugin = {
     end,
   },
 
+  "nvzone/volt",
+
   {
-    "NvChad/menu",
+    "nvzone/menu",
     keys = menu_keys,
     dependencies = {
-      "NvChad/volt",
+      "nvzone/volt",
     },
   },
 }
