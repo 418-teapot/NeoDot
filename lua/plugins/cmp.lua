@@ -61,6 +61,8 @@ local opts = function()
     }),
   }
 
+  options = vim.tbl_deep_extend("force", options, require("nvchad.cmp"))
+
   return options
 end
 
