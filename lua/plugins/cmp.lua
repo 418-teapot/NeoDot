@@ -1,88 +1,59 @@
 -- All plugins have lazy = true by default.
 
 local opts = function()
-  local cmp = require("cmp")
-  local luasnip = require("luasnip")
-
   local options = {
+    cmdline = {
+      enabled = true,
+    },
+    fuzzy = { implementation = "prefer_rust" },
+    sources = { default = { "lsp", "snippets", "buffer", "path" } },
+    keymap = {
+      preset = "none",
+      ["<CR>"] = { "accept", "fallback" },
+      ["<Tab>"] = { "select_next", "snippet_forward", "fallback" },
+      ["<S-Tab>"] = { "select_prev", "snippet_backward", "fallback" },
+      ["<Up>"] = { "select_prev", "fallback" },
+      ["<Down>"] = { "select_next", "fallback" },
+      ["<C-u>"] = { "scroll_documentation_up", "fallback" },
+      ["<C-d>"] = { "scroll_documentation_down", "fallback" },
+    },
     completion = {
-      completeopt = "menu,menuone,noinsert,noselect",
+      documentation = {
+        auto_show = true,
+        auto_show_delay_ms = 200,
+        window = { border = "single" },
+      },
+      list = {
+        selection = {
+          preselect = false,
+        },
+      },
+      menu = require("nvchad.blink").menu,
     },
-    snippet = {
-      expand = function(args)
-        luasnip.lsp_expand(args.body)
-      end,
-    },
-    sources = cmp.config.sources({
-      { name = "luasnip" },
-      { name = "nvim_lsp" },
-      { name = "buffer" },
-      { name = "path" },
-    }),
-    mapping = cmp.mapping.preset.insert({
-      ["<Tab>"] = cmp.mapping(function(fallback)
-        if cmp.visible() then
-          cmp.select_next_item()
-        elseif luasnip.expand_or_jumpable() then
-          vim.fn.feedkeys(
-            vim.api.nvim_replace_termcodes(
-              "<Plug>luasnip-expand-or-jump",
-              true,
-              true,
-              true
-            ),
-            ""
-          )
-        else
-          fallback()
-        end
-      end, { "i", "s" }),
-      ["<S-Tab>"] = cmp.mapping(function(fallback)
-        if cmp.visible() then
-          cmp.select_prev_item()
-        elseif luasnip.jumpable(-1) then
-          vim.fn.feedkeys(
-            vim.api.nvim_replace_termcodes(
-              "<Plug>luasnip-jump-prev",
-              true,
-              true,
-              true
-            ),
-            ""
-          )
-        else
-          fallback()
-        end
-      end, { "i", "s" }),
-      ["<C-d>"] = cmp.mapping.scroll_docs(4),
-      ["<C-u>"] = cmp.mapping.scroll_docs(-4),
-      ["<C-e>"] = cmp.mapping.close(),
-      ["<CR>"] = cmp.mapping.confirm(),
-    }),
   }
-
-  options = vim.tbl_deep_extend("force", options, require("nvchad.cmp"))
-
   return options
 end
 
 local plugin = {
   {
-    "hrsh7th/nvim-cmp",
-    event = "InsertEnter",
+    "saghen/blink.cmp",
+    version = "1.*",
+    event = { "InsertEnter", "CmdLineEnter" },
     dependencies = {
-      "hrsh7th/cmp-nvim-lsp",
-      "hrsh7th/cmp-buffer",
-      "hrsh7th/cmp-path",
-      "saadparwaiz1/cmp_luasnip",
-      {
-        "L3MON4D3/LuaSnip",
-        dependencies = {
-          "rafamadriz/friendly-snippets",
-        },
-      },
-    }, -- dependencies
+      "rafamadriz/friendly-snippets",
+      "nvchad/ui",
+    },
     opts = opts,
+    opts_extend = { "sources.default" },
+  },
+
+  {
+    "windwp/nvim-autopairs",
+    event = "InsertEnter",
+    opts = {
+      disable_filetype = { "TelescopePrompt", "vim" },
+      map_cr = true,
+    },
   },
 }
 

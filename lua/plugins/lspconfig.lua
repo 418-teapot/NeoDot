@@ -32,24 +32,14 @@ local servers = {
   tblgen_lsp_server = false,
 }
 
-local capabilities = vim.tbl_deep_extend(
-  "force",
-  {},
-  vim.lsp.protocol.make_client_capabilities(),
-  require("cmp_nvim_lsp").default_capabilities()
-)
-
 local config = function()
   local lsp = require("lspconfig")
   local mlsp = require("mason-lspconfig")
 
   local setup = function(server)
-    local server_opts = vim.tbl_deep_extend(
-      "force",
-      { capabilities = vim.deepcopy(capabilities) },
-      servers[server] or {}
+    lsp[server].setup(
+      require("blink.cmp").get_lsp_capabilities(servers[server] or {})
     )
-    lsp[server].setup(server_opts)
   end
 
   local ensure_installed = {}
@@ -81,6 +71,7 @@ local plugin = {
     dependencies = {
       "mason.nvim",
       "williamboman/mason-lspconfig.nvim",
+      "saghen/blink.cmp",
     },
     config = config,
   },
