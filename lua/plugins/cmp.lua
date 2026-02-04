@@ -6,7 +6,44 @@ local opts = function()
       enabled = true,
     },
     fuzzy = { implementation = "prefer_rust" },
-    sources = { default = { "lsp", "snippets", "buffer", "path" } },
+    sources = {
+      default = {
+        "lsp",
+        "snippets",
+        "buffer",
+        "path",
+        "avante_commands",
+        "avante_files",
+        "avante_mentions",
+        "avante_shortcuts",
+      },
+      providers = {
+        avante_commands = {
+          name = "avante_commands",
+          module = "blink.compat.source",
+          score_offset = 90,
+          opts = {},
+        },
+        avante_files = {
+          name = "avante_commands",
+          module = "blink.compat.source",
+          score_offset = 90,
+          opts = {},
+        },
+        avante_mentions = {
+          name = "avante_mentions",
+          module = "blink.compat.source",
+          score_offset = 90,
+          opts = {},
+        },
+        avante_shortcuts = {
+          name = "avante_shortcuts",
+          module = "blink.compat.source",
+          score_offset = 90,
+          opts = {},
+        },
+      },
+    },
     keymap = {
       preset = "none",
       ["<CR>"] = { "accept", "fallback" },
@@ -42,6 +79,11 @@ local plugin = {
     dependencies = {
       "rafamadriz/friendly-snippets",
       "nvchad/ui",
+      {
+        "saghen/blink.compat",
+        version = "2.*",
+        opts = {},
+      },
     },
     opts = opts,
     opts_extend = { "sources.default" },
