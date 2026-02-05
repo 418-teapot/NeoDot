@@ -1,5 +1,13 @@
 -- All plugins have lazy = true by default.
 
+local keys = {
+  {
+    "<C-a>",
+    "<cmd>AvanteToggle<cr>",
+    desc = "Toggle Avante",
+  },
+}
+
 local opts = {
   instructions_file = "AGENTS.md",
   provider = "claude-code",
@@ -25,9 +33,9 @@ local opts = {
 local plugins = {
   "yetone/avante.nvim",
   build = "make",
-  event = "VeryLazy",
   version = false,
   opts = opts,
+  keys = keys,
   dependencies = {
     "nvim-lua/plenary.nvim",
     "MunifTanjim/nui.nvim",
