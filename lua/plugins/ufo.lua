@@ -1,22 +1,5 @@
 -- All plugins have lazy = true by default.
 
-local keys = {
-  {
-    "zR",
-    function()
-      require("ufo").openAllFolds()
-    end,
-    desc = "Open all folds",
-  },
-  {
-    "zM",
-    function()
-      require("ufo").closeAllFolds()
-    end,
-    desc = "Close all folds",
-  },
-}
-
 local handler = function(virtText, lnum, endLnum, width, truncate)
   local newVirtText = {}
   local totalLines = vim.api.nvim_buf_line_count(0)
@@ -64,7 +47,6 @@ local plugin = {
       "BufReadPost",
       "BufNewFile",
     },
-    keys = keys,
     opts = function()
       return options
     end,
