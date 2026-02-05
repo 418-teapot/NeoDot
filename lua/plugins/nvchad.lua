@@ -18,7 +18,7 @@ local menu_keys = {
       require("menu.utils").delete_old_menus()
 
       vim.cmd.exec('"normal! \\<RightMouse>"')
-      local options = vim.bo.ft == "NvimTree" and "nvimtree" or "default"
+      local options = "default"
       require("menu").open(options, { mouse = true })
     end,
     mode = { "n", "v" },

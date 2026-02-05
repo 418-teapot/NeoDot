@@ -3,39 +3,6 @@ local M = {}
 local augroup = vim.api.nvim_create_augroup
 local autocmd = vim.api.nvim_create_autocmd
 
--- set filetype
-M.set_filetype = function()
-  local group = augroup("SetFileType", {})
-  autocmd({ "BufNewFile", "BufRead" }, {
-    pattern = "*.mlir",
-    group = group,
-    callback = function()
-      vim.bo.filetype = "mlir"
-    end,
-  })
-  autocmd({ "BufNewFile", "BufRead" }, {
-    pattern = "*.pdll",
-    group = group,
-    callback = function()
-      vim.bo.filetype = "pdll"
-    end,
-  })
-  autocmd({ "BufNewFile", "BufRead" }, {
-    pattern = "*.td",
-    group = group,
-    callback = function()
-      vim.bo.filetype = "tablegen"
-    end,
-  })
-  autocmd({ "BufNewFile", "BufRead" }, {
-    pattern = "*.mlu",
-    group = group,
-    callback = function()
-      vim.bo.filetype = "cpp"
-    end,
-  })
-end
-
 -- set indent for different file types
 M.set_indent = function()
   local group = augroup("SetIndent", {})

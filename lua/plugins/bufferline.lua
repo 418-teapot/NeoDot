@@ -71,14 +71,6 @@ local keys = {
 
 local options = {
   options = {
-    offsets = {
-      {
-        filetype = "NvimTree",
-        text = "פּ File Explorer",
-        highlight = "Directory",
-        text_align = "left",
-      },
-    }, -- offsets
     numbers = function(opts)
       local state = require("bufferline.state")
       for i, buf in ipairs(state.visible_components) do

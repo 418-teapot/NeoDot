@@ -119,10 +119,19 @@ end
 --------------------------------- mapping --------------------------------------
 require("core.mappings")
 
+--------------------------------- filetype -------------------------------------
+vim.filetype.add({
+  extension = {
+    mlir = "mlir",
+    mlu = "cpp",
+    pdll = "pdll",
+    td = "tablegen",
+  },
+})
+
 --------------------------------- autocmds -------------------------------------
 local autocmds = require("core.events")
 
-autocmds.set_filetype()
 autocmds.set_indent()
 autocmds.set_comment_string()
 autocmds.no_comment()

@@ -25,7 +25,7 @@ local opts = function()
           opts = {},
         },
         avante_files = {
-          name = "avante_commands",
+          name = "avante_files",
           module = "blink.compat.source",
           score_offset = 90,
           opts = {},
