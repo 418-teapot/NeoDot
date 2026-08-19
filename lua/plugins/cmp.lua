@@ -4,6 +4,13 @@ local opts = function()
   local options = {
     cmdline = {
       enabled = true,
+      completion = {
+        list = {
+          selection = {
+            preselect = false,
+          },
+        },
+      },
     },
     fuzzy = { implementation = "prefer_rust" },
     sources = {
