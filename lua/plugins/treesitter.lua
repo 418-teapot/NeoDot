@@ -25,6 +25,7 @@ local ensure_installed = {
   "lua",
   "make",
   "markdown",
+  "markdown_inline",
   "mlir",
   "nu",
   "ocaml",
