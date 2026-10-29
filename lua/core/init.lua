@@ -122,14 +122,14 @@ require("core.mappings")
 --------------------------------- filetype -------------------------------------
 vim.filetype.add({
   extension = {
-    mlir = "mlir",
     mlu = "cpp",
     pdll = "pdll",
-    td = "tablegen",
   },
 })
 
 --------------------------------- autocmds -------------------------------------
+require("core.treesitter").setup()
+
 local autocmds = require("core.events")
 
 autocmds.set_indent()
