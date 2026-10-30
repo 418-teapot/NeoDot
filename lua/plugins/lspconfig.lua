@@ -1,13 +1,25 @@
 -- All plugins have lazy = true by default.
 
+local function on_jump(diagnostic, bufnr)
+  if diagnostic then
+    vim.diagnostic.open_float({ bufnr = bufnr })
+  end
+end
+
+local function jump(count)
+  return function()
+    vim.diagnostic.jump({ count = count, on_jump = on_jump })
+  end
+end
+
 local keys = {
-  { "]d", vim.diagnostic.goto_next, mode = "n", desc = "Next diagnostic" },
-  { "[d", vim.diagnostic.goto_prev, mode = "n", desc = "Prev diagnostic" },
+  { "]d", jump(1), mode = "n", desc = "Next diagnostic" },
+  { "[d", jump(-1), mode = "n", desc = "Prev diagnostic" },
   {
     "<leader>q",
     vim.diagnostic.setloclist,
     mode = "n",
-    desc = "Diagnostic float window",
+    desc = "Diagnostic location list",
   },
 }
 
