@@ -12,12 +12,12 @@ local plugins = {
         "<C-y>",
         "<cmd>Yazi cwd<cr>",
         desc = "Open yazi",
-      }
+      },
     },
     opts = {
       open_for_directories = false,
-    }
-  }
+    },
+  },
 }
 
 return plugins
